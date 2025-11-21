@@ -1,0 +1,8 @@
+C:\Users\Martins PEECEE\Documents\MovieApp\Backend\obj\Debug\net8.0\Tv2ProxyApi.csproj.AssemblyReference.cache
+C:\Users\Martins PEECEE\Documents\MovieApp\Backend\obj\Debug\net8.0\Tv2ProxyApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Martins PEECEE\Documents\MovieApp\Backend\obj\Debug\net8.0\Tv2ProxyApi.AssemblyInfoInputs.cache
+C:\Users\Martins PEECEE\Documents\MovieApp\Backend\obj\Debug\net8.0\Tv2ProxyApi.AssemblyInfo.cs
+C:\Users\Martins PEECEE\Documents\MovieApp\Backend\obj\Debug\net8.0\Tv2ProxyApi.csproj.CoreCompileInputs.cache
+C:\Users\Martins PEECEE\Documents\MovieApp\Backend\obj\Debug\net8.0\Tv2ProxyApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Martins PEECEE\Documents\MovieApp\Backend\obj\Debug\net8.0\Tv2ProxyApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Martins PEECEE\Documents\MovieApp\Backend\obj\Debug\net8.0\Tv2ProxyApi.sourcelink.json

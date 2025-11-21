@@ -1,0 +1,8 @@
+using Backend.Dtos;
+
+public record feed_category_dto(
+    string id,
+    string title,
+    string? section_title,
+    List<MovieListItemDto> movies
+);
