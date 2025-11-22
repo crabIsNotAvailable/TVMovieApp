@@ -1,35 +1,31 @@
 package com.tv2oppgave.tvmovieapp
 
-import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import com.tv2oppgave.tvmovieapp.databinding.ActivityMainBinding
+import android.os.Bundle
+import android.util.Log
+import androidx.lifecycle.lifecycleScope
+import com.tv2oppgave.tvmovieapp.data.MovieRepository
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        MovieRepository.initializeDatabase(applicationContext)
+        setContentView(R.layout.activity_main)
 
-        val navView: BottomNavigationView = binding.navView
+        lifecycleScope.launch {
+            MovieRepository.getFeedMovies("feed_01k2f37n6vf26axgp52a8betek")
+                .collectLatest { list ->
+                    Log.d("TV2TEST", "Movies received = ${list.size}")
 
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
-            )
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+                    list.take(3).forEachIndexed { i, item ->
+                        Log.d("TV2TEST", "Movie[$i] = ${item.title}")
+                    }
+                }
+        }
     }
 }

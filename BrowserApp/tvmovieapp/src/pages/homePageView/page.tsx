@@ -17,18 +17,15 @@ export default function HomePageView() {
       setTop10(extractTop10(data));
       setRandom10(extractRandomMovies(data));
 
-      // Delay + fade-in
       setTimeout(() => setLoaded(true), 300);
     });
   }, []);
 
   return (
     <div style={{ position: "relative", width: "100%" }}>
-      
-      {/* ⭐ LOGO ALWAYS VISIBLE IMMEDIATELY */}
+
       <Logo />
 
-      {/* ⭐ PAGE CONTENT FADES IN */}
       <div
         style={{
           opacity: loaded ? 1 : 0,
