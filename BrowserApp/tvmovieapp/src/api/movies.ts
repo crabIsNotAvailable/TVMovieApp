@@ -5,13 +5,13 @@ const API_BASE = "http://localhost:5000/api/movies";
 
 export async function fetchMovieFeeds(): Promise<RootFeedResponse> {
   const res = await fetch(`${API_BASE}/feeds`);
-
   if (!res.ok) {
     throw new Error("Failed to load movie feeds");
   }
 
   return res.json();
 }
+
 
 export function extractTop10(feeds: RootFeedResponse) {
   return feeds.feeds.find(f => f.styles?.layout?.name === "top10")?.content ?? [];
@@ -30,3 +30,4 @@ export async function fetchMovieDetail(urlPath: string): Promise<MovieDetailResp
 
   return res.json();
 }
+

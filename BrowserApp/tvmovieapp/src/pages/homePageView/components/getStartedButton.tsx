@@ -28,11 +28,11 @@ export default function GetStartedOverlay() {
       <button
         style={{
           position: "absolute",
-          top: "59vh",
+          top: "58vh",
           left: "50%",
           transform: "translateX(-50%)",
-          fontSize: "3rem",
-          letterSpacing: "1.5rem",
+          fontSize: "5rem",
+          letterSpacing: "2rem",
           fontWeight: 700,
           background: "none",
           color: "#e6b000ff",
