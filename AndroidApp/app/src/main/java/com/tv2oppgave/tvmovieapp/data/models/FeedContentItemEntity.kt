@@ -11,7 +11,7 @@ data class FeedContentItemEntity(
     @PrimaryKey
     @ColumnInfo(name = "content_id")
     val id: String,
-    val title: String?,
+    val title: String,
     val imageSrc: String?,
     val urlPath: String?,
     val feedId: String?,
@@ -20,7 +20,7 @@ data class FeedContentItemEntity(
 
 data class MovieListItem(
     val id: String,
-    val title: String?,
+    val title: String,
     val imageUrl: String?,
     val urlPath: String?
 )

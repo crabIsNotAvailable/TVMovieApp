@@ -1,0 +1,38 @@
+package com.tv2oppgave.tvmovieapp.utility
+
+
+fun SwapImage(url: String?, type: String = "landscape"): String {
+    if (url.isNullOrBlank()) return ""
+
+    val split = url.split("?")
+    val base = split[0]
+    val query = split.getOrNull(1).orEmpty()
+
+    // Parse query string into a MutableMap<String, String>
+    val params = mutableMapOf<String, String>()
+
+    query.split("&").forEach { part ->
+        val kv = part.split("=")
+        if (kv.size == 2) {
+            val key = kv[0]
+            val value = kv[1]
+            params[key] = value
+        }
+    }
+
+    // Apply TV2 poster/landscape logic
+    if (type == "poster") {
+        params["location"] = "moviePoster"
+        params["width"] = "600"
+        params["height"] = "900"
+    } else {
+        params["location"] = "list"
+        params["width"] = "1920"
+        params["height"] = "1080"
+    }
+
+    // Build new query string
+    val newQuery = params.entries.joinToString("&") { "${it.key}=${it.value}" }
+
+    return "$base?$newQuery"
+}

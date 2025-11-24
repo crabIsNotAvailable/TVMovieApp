@@ -7,7 +7,7 @@ import com.tv2oppgave.tvmovieapp.data.models.FeedContentItemEntity
 
 @Database(
     entities = [FeedContentItemEntity::class],
-    version = 2,
+    version = 3,
     exportSchema = false
 )
 @TypeConverters(Converters::class)
