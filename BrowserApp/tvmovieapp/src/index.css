@@ -21,3 +21,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* hide scrollbars in WebKit (Chrome, Safari) */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* while dragging: grab cursor and prevent text selection */
+.no-scrollbar.dragging {
+  cursor: grabbing;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}

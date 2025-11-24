@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from "react";
-import { FeedContentItem } from "../../../models/feed";
+import { FeedMovie } from "../../../models/feed";
 
 interface Props {
-  items: FeedContentItem[];
+  items: FeedMovie[];
 }
 
 export default function MovieScroller({ items }: Props) {
@@ -13,7 +13,7 @@ export default function MovieScroller({ items }: Props) {
     if (!el) return;
 
     requestAnimationFrame(() => {
-      let position = -el.scrollWidth / 2; 
+      let position = -el.scrollWidth / 2;
 
       const loop = () => {
         position += 0.2;
@@ -41,8 +41,8 @@ export default function MovieScroller({ items }: Props) {
     >
       <div ref={containerRef} style={{ display: "inline-flex" }}>
         {[...items, ...items].map((item, i) => {
-          const src = item.image?.src
-            ? item.image.src
+          const src = item.imageUrl
+            ? item.imageUrl
             : "https://via.placeholder.com/400x225?text=No+Image";
 
           return (

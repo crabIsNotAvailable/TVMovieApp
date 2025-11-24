@@ -13,6 +13,13 @@ public static class MovieMapper
         ImageUrl: item.image?.src ?? "",
         UrlPath: item.url
     );
+    public static MovieListItemDto ToListDto2(FeedMovieItem item) =>
+    new(
+        Id: item.id,
+        Title: item.title,
+        ImageUrl: item.imageUrl ?? "",
+        UrlPath: item.urlPath
+    );
 
     public static MovieDetailDto ToDetailDto(MovieDetail detail) =>
         new(

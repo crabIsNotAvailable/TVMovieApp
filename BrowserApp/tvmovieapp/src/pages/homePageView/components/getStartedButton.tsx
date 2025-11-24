@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function GetStartedOverlay() {
   return (
     <div
@@ -25,37 +27,40 @@ export default function GetStartedOverlay() {
         `,
       }}
     >
-      <button
-        style={{
-          position: "absolute",
-          top: "58vh",
-          left: "50%",
-          transform: "translateX(-50%)",
-          fontSize: "5rem",
-          letterSpacing: "2rem",
-          fontWeight: 700,
-          background: "none",
-          color: "#e6b000ff",
-          border: "none",
-          cursor: "pointer",
-          zIndex: 20,
+      <Link
+        to="/explore"
+        style={{ textDecoration: "none" }} // prevent underline
+      >
+        <button
+          style={{
+            position: "absolute",
+            top: "58vh",
+            left: "50%",
+            transform: "translateX(-50%)",
+            fontSize: "5rem",
+            letterSpacing: "2rem",
+            fontWeight: 700,
+            background: "none",
+            color: "#e6b000ff",
+            border: "none",
+            cursor: "pointer",
+            zIndex: 20,
 
-          // ⭐ BUTTON FIX
-          willChange: "filter",
+            willChange: "filter",
 
-          // ⭐ SHADOW (this will now render)
-          filter: `
-            drop-shadow(0 0 40px rgba(218, 170, 0, 0.82))
-            drop-shadow(0 0 0px rgba(210,170,20,0.5))
-            drop-shadow(0 0 40px rgba(0,0,0,0.9))
+            filter: `
+              drop-shadow(0 0 40px rgba(218, 170, 0, 0.82))
+              drop-shadow(0 0 0px rgba(210,170,20,0.5))
+              drop-shadow(0 0 40px rgba(0,0,0,0.9))
             `,
 
-          WebkitFontSmoothing: "antialiased",
-          MozOsxFontSmoothing: "grayscale",
-        }}
-      >
-        UTFORSK
-      </button>
+            WebkitFontSmoothing: "antialiased",
+            MozOsxFontSmoothing: "grayscale",
+          }}
+        >
+          UTFORSK
+        </button>
+      </Link>
     </div>
   );
 }

@@ -21,19 +21,29 @@ public class MovieService : IMovieService
 
     public async Task<feed_category_dto?> GetFeedById(string feedId, CancellationToken ct = default)
     {
-        var root = await GetAllFeeds(ct);
-        if (root == null) return null;
-
-        var feed = root.feeds.FirstOrDefault(f => f.id == feedId);
+        var feed = await _client.GetSingleFeedAsync($"/v4/feed/{feedId}", ct);
         if (feed == null) return null;
 
-        return new feed_category_dto(
-            id: feed.id,
-            title: feed.title,
-            section_title: feed.section_title,
-            movies: feed.content.Select(MovieMapper.ToListDto).ToList()
-        );
+
+
+        if (feed.content != null && feed.content.Any())
+        {
+            // content[] format
+            return new feed_category_dto(
+                id: feed.id,
+                title: feed.title,
+                section_title: feed.section_title,
+                movies: feed.content
+                    .Select(MovieMapper.ToListDto)
+                    .ToList()
+            );
+        }
+
+        return null;
     }
+
+
+
 
 
     public async Task<MovieDetailDto?> GetMovieDetail(string urlPath, CancellationToken ct = default)

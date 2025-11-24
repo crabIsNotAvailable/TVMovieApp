@@ -23,7 +23,7 @@ export interface Feed {
     };
   };
 
-  content: FeedContentItem[];
+  movies: FeedMovie[];
 }
 
 export interface FeedContentItem {
@@ -36,7 +36,15 @@ export interface FeedContentItem {
   url: string;
 }
 
+export interface FeedMovie {
+  id: string;
+  title: string;
+  imageUrl: string;
+  urlPath: string;
+}
+
 export interface Label {
   text: string;
   type: string;
 }
+

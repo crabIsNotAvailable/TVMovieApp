@@ -7,9 +7,13 @@ namespace Backend.Http;
 
 public interface ITv2PlayClient
 {
-    Task<Backend.Models.Feed.RootFeedResponse?> GetFeedAsync(string feedPath, CancellationToken ct = default);
+    Task<RootFeedResponse?> GetFeedAsync(string path, CancellationToken ct = default);
+
+    Task<SingleFeedResponse?> GetSingleFeedAsync(string path, CancellationToken ct = default);
+
     Task<MovieDetail?> GetContentByPathAsync(string path, CancellationToken ct = default);
 }
+
 
 public class Tv2PlayClient : ITv2PlayClient
 {
@@ -30,6 +34,17 @@ public class Tv2PlayClient : ITv2PlayClient
         res.EnsureSuccessStatusCode();
         var stream = await res.Content.ReadAsStreamAsync(ct);
         return await JsonSerializer.DeserializeAsync<RootFeedResponse>(stream, _jsonOptions, ct);
+    }
+
+    public async Task<SingleFeedResponse?> GetSingleFeedAsync(string feedPath, CancellationToken ct = default)
+    {
+        var res = await _client.GetAsync(feedPath, ct);
+
+        if (!res.IsSuccessStatusCode)
+            return null;
+
+        var stream = await res.Content.ReadAsStreamAsync(ct);
+        return await JsonSerializer.DeserializeAsync<SingleFeedResponse>(stream, _jsonOptions, ct);
     }
 
     public async Task<MovieDetail?> GetContentByPathAsync(string path, CancellationToken ct = default)

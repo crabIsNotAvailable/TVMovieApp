@@ -52,7 +52,23 @@ public sealed record FeedContentItem(
     System.Collections.Generic.List<Label>? labels,
     TrackingInfo? t
 );
+public class SingleFeedResponse
+{
+    public string id { get; set; }
+    public string title { get; set; }
+    public string? section_title { get; set; }
 
+    public List<FeedContentItem> content { get; set; } = new();
+    public List<FeedMovieItem> movies { get; set; } = new();
+}
+
+public class FeedMovieItem
+{
+    public string id { get; set; }
+    public string title { get; set; }
+    public string imageUrl { get; set; }
+    public string urlPath { get; set; }
+}
 public sealed record FeedImage(
     string src
 );

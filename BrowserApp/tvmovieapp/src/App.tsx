@@ -1,14 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import HomePageView from './pages/homePageView/page';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HomePageView from "./pages/homePageView/page";
+import ListView from "./pages/listView/ListView";
 
-function App() {
+export default function App() {
   return (
-    <div>
-      <HomePageView/>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePageView />} />
+        <Route path="/explore" element={<ListView />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
-export default App;
