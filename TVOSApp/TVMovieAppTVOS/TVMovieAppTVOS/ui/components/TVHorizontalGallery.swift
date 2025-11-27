@@ -8,7 +8,8 @@ struct HorizontalGallery: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            if let title = title {
+
+            if let title {
                 Text(title)
                     .font(.largeTitle.bold())
                     .foregroundColor(AppColors.gold)
@@ -22,7 +23,7 @@ struct HorizontalGallery: View {
                             url: movie.imageUrl,
                             variant: variant
                         ) {
-                            onSelect(movie)
+                            onSelect(movie)   // ✅ forward selection
                         }
                     }
                 }

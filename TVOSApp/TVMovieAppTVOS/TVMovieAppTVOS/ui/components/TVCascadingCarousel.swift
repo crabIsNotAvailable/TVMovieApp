@@ -3,6 +3,8 @@ import SwiftUI
 struct CascadingCarousel: View {
     let items: [MovieListItem]
     @Binding var index: Int
+    let onSelect: (MovieListItem) -> Void
+    
     var neighborRadius = 3
 
     @FocusState private var focusedItem: Int?
