@@ -40,7 +40,7 @@ data class FeedContentItem(
     val id: String,
     val title: String,
     val imageUrl: String?,
-    val urlPath: String?
+    val urlPath: String
 )
 
 data class FeedImage(

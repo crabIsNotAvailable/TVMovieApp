@@ -27,17 +27,25 @@ fun FeedContentItemEntity.toDomain(): MovieListItem =
 
 fun MovieDetailResponse.toDomain(): MovieDetailUiModel =
     MovieDetailUiModel(
-        title = this.title,
-        description = this.description,
-        durationSeconds = this.duration ?: 0,
-        posterSrc = this.images?.poster?.src,
-        coverSrc = this.images?.cover?.src
+        id = this.id ?: "",
+        title = this.title ?: "",
+        description = this.description ?: "",
+        durationMinutes = this.durationMinutes,
+        posterUrl = this.posterUrl,
+        year = this.year,
+        ageRating = this.ageRating,
+        genres = this.genres,
+        cast = this.cast
     )
 
 data class MovieDetailUiModel(
-    val title: String?,
-    val description: String?,
-    val durationSeconds: Int,
-    val posterSrc: String?,
-    val coverSrc: String?
+    val id: String,
+    val title: String,
+    val description: String,
+    val durationMinutes: Int?,
+    val posterUrl: String?,
+    val year: Int?,
+    val ageRating: String?,
+    val genres: List<String>,
+    val cast: List<String>
 )

@@ -1,53 +1,26 @@
 package com.tv2oppgave.tvmovieapp.ui.ListView
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.*
-import android.util.Log
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.BlendMode.Companion.Color
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.tv2oppgave.tvmovieapp.data.MovieRepository
+import androidx.navigation.NavController
 import com.tv2oppgave.tvmovieapp.data.models.FeedIds
-import com.tv2oppgave.tvmovieapp.data.models.MovieListItem
-import androidx.compose.ui.unit.sp
 
 @Composable
 fun ListView(
-    feedId: String,
-    title: String,
-    variant: String,
-    onSelect: (MovieListItem) -> Unit = {}
+    navController: NavController
 ) {
-    var movies by remember { mutableStateOf<List<MovieListItem>>(emptyList()) }
-
-    LaunchedEffect(feedId) {
-        MovieRepository.getFeedMovies(feedId).collect { list ->
-            movies = list
-        }
+    LazyColumn(
+        verticalArrangement = Arrangement.spacedBy(24.dp),
+        modifier = Modifier.padding(16.dp)
+    ) {
+        item { FeedView(navController = navController, FeedIds.Recommended, "For deg", "landscape") }
+        item { FeedView(navController = navController, FeedIds.Festival, "Vist på festival", "poster") }
+        item { FeedView(navController = navController, FeedIds.Focus, "Alltid film", "landscape") }
+        item { FeedView(navController = navController, FeedIds.NewArrivals, "Nyeankommede", "landscape") }
+        item { FeedView(navController = navController, FeedIds.BuyRent, "Kjøp eller lei", "poster") }
     }
-    Column {
-        Text(text = title,
-            fontFamily = FontFamily.SansSerif,
-            fontSize = 25.sp,
-            color = Color(0xFFCCA90D),
-            fontWeight = FontWeight(500),
-            modifier = Modifier
-                .padding(8.dp)
-            )
-        HorizontalGallery(
-            items = movies,
-            variant = variant,
-            onSelect = onSelect
-        )
-    }
-
 }
-

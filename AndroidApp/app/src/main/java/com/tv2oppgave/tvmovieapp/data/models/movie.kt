@@ -1,15 +1,16 @@
 package com.tv2oppgave.tvmovieapp.data.models
 
-
 data class MovieDetailResponse(
+    val id: String? = null,
     val title: String? = null,
     val description: String? = null,
-    val duration: Int? = null, // seconds
-    val url: String? = null,
-    val images: MovieImages? = null,
-    val metadata: Map<String, Any>? = null
+    val durationMinutes: Int? = null,
+    val posterUrl: String? = null,
+    val year: Int? = null,
+    val ageRating: String? = null,
+    val genres: List<String> = emptyList(),
+    val cast: List<String> = emptyList()
 )
-
 data class MovieImages(
     val poster: MovieImageVariant? = null,
     val cover: MovieImageVariant? = null,

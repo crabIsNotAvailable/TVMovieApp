@@ -13,7 +13,7 @@ data class FeedContentItemEntity(
     val id: String,
     val title: String,
     val imageSrc: String?,
-    val urlPath: String?,
+    val urlPath: String,
     val feedId: String?,
     val rawJson: String?
 )
@@ -22,5 +22,5 @@ data class MovieListItem(
     val id: String,
     val title: String,
     val imageUrl: String?,
-    val urlPath: String?
+    val urlPath: String
 )
