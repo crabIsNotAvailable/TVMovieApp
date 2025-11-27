@@ -469,25 +469,26 @@
     ]
   },
   "packageFolders": {
-    "/Users/marenrodland/.nuget/packages/": {}
+    "C:\\Users\\Martins PEECEE\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/marenrodland/KodeMartin/TVMovieApp/Backend/Backend.csproj",
+      "projectUniqueName": "C:\\Users\\Martins PEECEE\\Documents\\TVMovieApp\\Backend\\Backend.csproj",
       "projectName": "Backend",
-      "projectPath": "/Users/marenrodland/KodeMartin/TVMovieApp/Backend/Backend.csproj",
-      "packagesPath": "/Users/marenrodland/.nuget/packages/",
-      "outputPath": "/Users/marenrodland/KodeMartin/TVMovieApp/Backend/obj/",
+      "projectPath": "C:\\Users\\Martins PEECEE\\Documents\\TVMovieApp\\Backend\\Backend.csproj",
+      "packagesPath": "C:\\Users\\Martins PEECEE\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Martins PEECEE\\Documents\\TVMovieApp\\Backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/marenrodland/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Martins PEECEE\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://www.nuget.org/api/v2": {}
       },
       "frameworks": {
         "net8.0": {
@@ -538,7 +539,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.416/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "c:\\program files\\dotnet\\sdk\\8.0.416/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

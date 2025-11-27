@@ -1,5 +1,5 @@
 import { RootFeedResponse, Feed } from "../models/feed";
-import { MovieDetailResponse } from "../models/movie";
+import { MovieDetail } from "../models/movie";
 
 const API_BASE = "http://localhost:5000/api/Movies";
 
@@ -22,16 +22,14 @@ export async function fetchFeedById(feedId: string): Promise<Feed> {
 }
 
 // Fetch movie detail
-export async function fetchMovieDetail(
-  urlPath: string
-): Promise<MovieDetailResponse> {
+export async function fetchMovieDetail(urlPath: string): Promise<MovieDetail> {
+  const normalizedPath = urlPath.replace(/^\//, "");
 
-  const encodedPath = encodeURIComponent(urlPath.replace(/^\//, ""));
-
-  const res = await fetch(`${API_BASE}/detail/${encodedPath}`);
+  const res = await fetch(`${API_BASE}/detail/${normalizedPath}`);
 
   if (!res.ok) {
     throw new Error("Failed to load movie detail");
   }
+
   return res.json();
 }

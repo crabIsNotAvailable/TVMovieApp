@@ -1,26 +1,27 @@
 import React, { useRef, useState, useEffect } from "react";
 import { toMovieImage } from "../utils/swapImage";
 import { FeedMovie } from "../models/feed";
-import { useDraggableScroll } from "../hooks/useDraggableScroll";
+import { useNavigate } from "react-router-dom";
 
 interface HorizontalGalleryProps {
   items: FeedMovie[];
   variant?: "poster" | "landscape";
-  onSelect?: (id: string) => void;
 }
 
 export const HorizontalGallery: React.FC<HorizontalGalleryProps> = ({
   items,
   variant = "poster",
-  onSelect,
 }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
-  // Drag hook
-  const { getHandlers } = useDraggableScroll();
+  const isDragging = useRef(false);
+  const startX = useRef(0);
 
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
+
+  const DRAG_THRESHOLD_PX = 5;
 
   const updateScrollButtons = () => {
     const el = scrollRef.current;
@@ -41,6 +42,43 @@ export const HorizontalGallery: React.FC<HorizontalGalleryProps> = ({
     setTimeout(updateScrollButtons, 300);
   };
 
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    isDragging.current = false;
+    startX.current = e.clientX;
+    scrollRef.current?.setPointerCapture(e.pointerId);
+  };
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!scrollRef.current) return;
+
+    const dx = e.clientX - startX.current;
+    if (Math.abs(dx) > DRAG_THRESHOLD_PX) {
+      isDragging.current = true;
+    }
+
+    scrollRef.current.scrollLeft -= dx;
+    startX.current = e.clientX;
+    updateScrollButtons();
+  };
+
+  const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    scrollRef.current?.releasePointerCapture(e.pointerId);
+
+    if (isDragging.current) return;
+
+    // ✅ Find the card under the pointer
+    const el = document.elementFromPoint(e.clientX, e.clientY);
+    const card = el?.closest<HTMLDivElement>("[data-urlpath]");
+
+    if (!card) return;
+
+    const urlPath = card.dataset.urlpath;
+    if (!urlPath) return;
+
+    console.log("NAVIGATING TO:", urlPath);
+    navigate(`/movie/${urlPath}`);
+  };
+
   return (
     <div style={{ position: "relative" }}>
       {canScrollLeft && (
@@ -52,9 +90,11 @@ export const HorizontalGallery: React.FC<HorizontalGalleryProps> = ({
       <div
         ref={scrollRef}
         style={styles.wrapper}
-        {...getHandlers(scrollRef)} // 👈 pointer drag hook
-        onScroll={updateScrollButtons}
         className="no-scrollbar"
+        onScroll={updateScrollButtons}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
       >
         {items.map((item) => {
           const finalImage =
@@ -65,15 +105,14 @@ export const HorizontalGallery: React.FC<HorizontalGalleryProps> = ({
           return (
             <div
               key={item.id}
+              data-urlpath={item.urlPath} // ✅ IMPORTANT
               style={styles.card}
-              onClick={() => onSelect?.(item.id)}
             >
               <img
                 src={finalImage}
                 alt={item.title}
                 style={variant === "poster" ? styles.poster : styles.landscape}
                 draggable={false}
-                onDragStart={(e) => e.preventDefault()}
               />
             </div>
           );

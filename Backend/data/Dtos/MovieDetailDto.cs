@@ -5,5 +5,9 @@ public sealed record MovieDetailDto(
     string Title,
     string Description,
     int? DurationMinutes,
-    string? PosterUrl
+    string? PosterUrl,
+    int? Year,
+    string? AgeRating,
+    List<string> Genres,
+    List<string> Cast
 );

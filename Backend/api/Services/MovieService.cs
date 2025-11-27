@@ -46,11 +46,17 @@ public class MovieService : IMovieService
 
 
 
-    public async Task<MovieDetailDto?> GetMovieDetail(string urlPath, CancellationToken ct = default)
+    public async Task<MovieDetailDto?> GetMovieDetail(
+        string urlPath,
+        CancellationToken ct = default)
     {
-        var movie = await _client.GetContentByPathAsync(urlPath, ct);
-        return movie == null ? null : MovieMapper.ToDetailDto(movie);
+        var page = await _client.GetContentByPathAsync(urlPath, ct);
+        if (page is null)
+            return null;
+
+        return MovieMapper.ToDetailDto(page);
     }
+
 
     public async Task<List<MovieListItemDto>> SearchMovies(string query, CancellationToken ct = default)
     {
