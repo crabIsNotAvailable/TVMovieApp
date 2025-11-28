@@ -1,7 +1,7 @@
 import { RootFeedResponse, Feed } from "../models/feed";
 import { MovieDetail } from "../models/movie";
 
-const API_BASE = "http://localhost:5000/api/Movies";
+const API_BASE = "http://localhost:8080/api/Movies";
 
 // Fetch all feeds (root list)
 export async function fetchMovieFeeds(): Promise<RootFeedResponse> {

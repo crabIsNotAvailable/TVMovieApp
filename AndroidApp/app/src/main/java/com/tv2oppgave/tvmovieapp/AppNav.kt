@@ -9,6 +9,7 @@ import androidx.navigation.NavType
 import androidx.navigation.navArgument
 import com.tv2oppgave.tvmovieapp.ui.details.MovieDetailScreen
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import com.tv2oppgave.tvmovieapp.ui.ListView.ListView
 
 @Composable
@@ -38,7 +39,8 @@ fun AppNav() {
 
             MovieDetailScreen(
                 urlPath = urlPath,
-                viewModel = viewModel()
+                viewModel = viewModel(),
+                navController = navController
             )
         }
 

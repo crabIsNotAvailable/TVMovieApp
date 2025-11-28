@@ -31,14 +31,15 @@ fun FeedView(
             movies = list
         }
     }
-    Column {
+    Column(
+        modifier = Modifier.padding( start = 16.dp)
+    ) {
         Text(text = title,
             fontFamily = FontFamily.SansSerif,
             fontSize = 25.sp,
             color = Color(0xFFCCA90D),
             fontWeight = FontWeight(500),
-            modifier = Modifier
-                .padding(8.dp)
+            modifier = Modifier.padding(bottom = 5.dp)
             )
         HorizontalGallery(
             items = movies,

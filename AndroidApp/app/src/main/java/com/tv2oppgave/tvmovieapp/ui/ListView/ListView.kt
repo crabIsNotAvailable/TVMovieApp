@@ -15,8 +15,13 @@ fun ListView(
 ) {
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(24.dp),
-        modifier = Modifier.padding(16.dp)
     ) {
+        item {
+            HighlightHero(
+                navController = navController,
+                feedId = FeedIds.MostSeen,
+            )
+        }
         item { FeedView(navController = navController, FeedIds.Recommended, "For deg", "landscape") }
         item { FeedView(navController = navController, FeedIds.Festival, "Vist på festival", "poster") }
         item { FeedView(navController = navController, FeedIds.Focus, "Alltid film", "landscape") }

@@ -34,7 +34,7 @@ object MovieRepository {
     private val retrofit =
         Retrofit.Builder()
             .client(httpClient)
-            .baseUrl("http://10.0.2.2:5000/") // Android → Windows backend
+            .baseUrl("http://10.0.2.2:8080/") // Android → Windows backend
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
