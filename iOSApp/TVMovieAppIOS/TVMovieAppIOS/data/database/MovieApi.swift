@@ -9,7 +9,7 @@
 import Foundation
 
 class MovieApi {
-    static let base = "http://localhost:5050/api/Movies" // Simulator only
+    static let base = "http://localhost:8080/api/Movies" // Simulator only
 
     static func fetchFeed(_ feedId: String) async throws -> FeedDTO {
         let url = URL(string: "\(base)/feed/id/\(feedId)")!

@@ -14,8 +14,14 @@ struct ListView: View {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 28) {
 
+                        HighlightHero(feedId: FeedIds.mostSeen.rawValue,
+                            onSelect: { movie in
+                                path.append(.movieDetail(movie.urlPath))
+                            }
+                        )
+                        
                         FeedSection(
-                            title: "Recommended",
+                            title: "For deg",
                             feedId: FeedIds.recommended.rawValue,
                             variant: "poster",
                             onSelect: { movie in
@@ -24,7 +30,15 @@ struct ListView: View {
                         )
 
                         FeedSection(
-                            title: "Focus",
+                            title: "Vist på festival",
+                            feedId: FeedIds.festival.rawValue,
+                            variant: "landscape",
+                            onSelect: { movie in
+                                path.append(.movieDetail(movie.urlPath))
+                            }
+                        )
+                        FeedSection(
+                            title: "Alltid film",
                             feedId: FeedIds.focus.rawValue,
                             variant: "landscape",
                             onSelect: { movie in
@@ -33,22 +47,22 @@ struct ListView: View {
                         )
 
                         FeedSection(
-                            title: "New Arrivals",
+                            title: "Nyankommende",
                             feedId: FeedIds.newArrivals.rawValue,
+                            variant: "landscape",
+                            onSelect: { movie in
+                                path.append(.movieDetail(movie.urlPath))
+                            }
+                        )
+                        FeedSection(
+                            title: "Kjøp eller lei",
+                            feedId: FeedIds.buyRent.rawValue,
                             variant: "poster",
                             onSelect: { movie in
                                 path.append(.movieDetail(movie.urlPath))
                             }
                         )
 
-                        FeedSection(
-                            title: "Festival",
-                            feedId: FeedIds.festival.rawValue,
-                            variant: "landscape",
-                            onSelect: { movie in
-                                path.append(.movieDetail(movie.urlPath))
-                            }
-                        )
                     }
                     .padding(.top, 20)
                 }

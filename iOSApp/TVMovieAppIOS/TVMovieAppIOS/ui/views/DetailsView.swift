@@ -8,119 +8,128 @@ struct DetailsView: View {
     @State private var error: String?
 
     var body: some View {
-        AppBackground {
+        ZStack {
+            Color.black.ignoresSafeArea()
+
             ScrollView {
+                VStack(spacing: 24) {
 
-                if isLoading {
-                    ProgressView()
-                        .padding()
-                        .tint(AppColors.gold)
-                }
-                else if let movie {
+                    // ---------- HERO ----------
+                    if let poster = movie?.posterUrl,
+                       let url = URL(string: poster) {
 
-                    VStack(alignment: .leading, spacing: 16) {
-
-                        // ✅ Hero image
-                        if let poster = movie.posterUrl,
-                           let url = URL(string: poster) {
+                        ZStack(alignment: .bottom) {
                             AsyncImage(url: url) { image in
                                 image
                                     .resizable()
                                     .scaledToFill()
                             } placeholder: {
-                                Color.black.opacity(0.2)
+                                Color.black.opacity(0.3)
                             }
-                            .frame(height: 260)
                             .clipped()
+
+                            LinearGradient(
+                                colors: [.clear, .black],
+                                startPoint: .top,
+                                endPoint: .bottom
+                            )
+                            .frame(height: 120)
                         }
+                        .frame(maxWidth: .infinity)
+                    }
 
-                        VStack(alignment: .leading, spacing: 12) {
+                    // ---------- CONTENT ----------
+                    if let movie {
 
-                            // ✅ Title
+                        VStack(alignment: .leading, spacing: 16) {
+
+                            // Title
                             Text(movie.title)
                                 .font(.title)
                                 .bold()
                                 .foregroundColor(AppColors.gold)
 
-                            // ✅ Meta row
+                            // Meta
                             HStack(spacing: 12) {
                                 if let year = movie.year {
-                                    Text("\(year)")
+                                    MetaText("\(year)")
                                 }
                                 if let age = movie.ageRating {
-                                    Text(age)
+                                    MetaText(age)
                                 }
                                 if let duration = movie.durationMinutes {
-                                    Text("\(duration) min")
+                                    MetaText("\(duration) min")
                                 }
                             }
-                            .foregroundColor(.white.opacity(0.8))
-                            .font(.subheadline)
 
-                            // ✅ Genres
+                            // Genres
                             if !movie.genres.isEmpty {
                                 ScrollView(.horizontal, showsIndicators: false) {
                                     HStack(spacing: 8) {
                                         ForEach(movie.genres, id: \.self) { genre in
                                             Text(genre)
                                                 .font(.caption)
-                                                .padding(.horizontal, 10)
+                                                .padding(.horizontal, 12)
                                                 .padding(.vertical, 6)
-                                                .background(AppColors.gold.opacity(0.9))
+                                                .background(AppColors.gold)
                                                 .foregroundColor(.black)
-                                                .cornerRadius(12)
+                                                .clipShape(Capsule())
                                         }
                                     }
                                 }
                             }
 
-                            // ✅ Description
+                            // Description
                             Text(movie.description)
-                                .foregroundColor(.white)
-                                .font(.body)
-                                .padding(.top, 8)
+                                .foregroundColor(.white.opacity(0.9))
+                                .fixedSize(horizontal: false, vertical: true)
 
-                            // ✅ Cast
+                            // Cast
                             if !movie.cast.isEmpty {
                                 Text("Cast")
                                     .font(.headline)
                                     .foregroundColor(AppColors.gold)
-                                    .padding(.top, 16)
+                                    .padding(.top, 12)
 
                                 ForEach(movie.cast, id: \.self) { actor in
                                     Text(actor)
-                                        .foregroundColor(.white.opacity(0.9))
+                                        .foregroundColor(.white.opacity(0.85))
                                 }
                             }
                         }
-                        .padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 16)
-                                .fill(Color.black.opacity(0.25))
-                        )
-                        .padding(.horizontal)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal, 16)
+                    }
+
+                    if isLoading {
+                        ProgressView()
+                            .tint(AppColors.gold)
+                    }
+
+                    if let error {
+                        Text(error)
+                            .foregroundColor(.red)
                     }
                 }
-                else if let error {
-                    Text(error)
-                        .foregroundColor(.red)
-                        .padding()
-                }
+                .padding(.bottom, 24)
             }
         }
-        .task {
-            await loadMovie()
-        }
+        .task { await loadMovie() }
         .navigationBarTitleDisplayMode(.inline)
     }
 
     private func loadMovie() async {
         do {
-            let response = try await MovieApi.fetchMovieDetail(urlPath)
-            movie = response
+            movie = try await MovieApi.fetchMovieDetail(urlPath)
         } catch {
             self.error = "Could not load movie"
         }
         isLoading = false
     }
+}
+
+private func MetaText(_ text: String) -> some View {
+    Text(text)
+        .font(.subheadline)
+        .foregroundColor(.white.opacity(0.7))
 }

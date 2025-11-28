@@ -20,10 +20,10 @@ struct FeedSection: View {
         VStack(alignment: .leading, spacing: 8) {
 
             Text(title)
-                .font(AppText.section)
+                .font(.largeTitle)
                 .foregroundColor(AppColors.gold)
                 .padding(.leading)
-
+                
             HorizontalGallery(
                 items: movies,
                 variant: variant,

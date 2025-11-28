@@ -13,6 +13,9 @@ struct ListView: View {
     @State private var mostSeen: [MovieListItem] = []
     @State private var recommended: [MovieListItem] = []
     @State private var festival: [MovieListItem] = []
+    @State private var focus: [MovieListItem] = []
+    @State private var newArrivals: [MovieListItem] = []
+    @State private var buyRent: [MovieListItem] = []
 
     @State private var highlightIndex = 0
 
@@ -32,19 +35,10 @@ struct ListView: View {
                                 path.append(.movieDetail(movie.urlPath))
                             }
                         }
-
-                        HorizontalGallery(
-                            items: mostSeen,
-                            variant: "poster",
-                            title: "Most Seen"
-                        ) { movie in
-                            path.append(.movieDetail(movie.urlPath))
-                        }
-
                         HorizontalGallery(
                             items: recommended,
                             variant: "landscape",
-                            title: "Recommended"
+                            title: "For deg"
                         ) { movie in
                             path.append(.movieDetail(movie.urlPath))
                         }
@@ -52,7 +46,30 @@ struct ListView: View {
                         HorizontalGallery(
                             items: festival,
                             variant: "poster",
-                            title: "Festival"
+                            title: "Vist på Festival"
+                        ) { movie in
+                            path.append(.movieDetail(movie.urlPath))
+                        }
+
+                        HorizontalGallery(
+                            items: focus,
+                            variant: "landscape",
+                            title: "Alltid film"
+                        ) { movie in
+                            path.append(.movieDetail(movie.urlPath))
+                        }
+                        HorizontalGallery(
+                            items: newArrivals,
+                            variant: "landscape",
+                            title: "Nyankommende"
+                        ) { movie in
+                            path.append(.movieDetail(movie.urlPath))
+                        }
+
+                        HorizontalGallery(
+                            items: buyRent,
+                            variant: "poster",
+                            title: "Kjøp eller lei"
                         ) { movie in
                             path.append(.movieDetail(movie.urlPath))
                         }
@@ -64,7 +81,9 @@ struct ListView: View {
             .navigationDestination(for: Route.self) { route in
                 switch route {
                 case .movieDetail(let urlPath):
-                    DetailsView(urlPath: urlPath)
+                    DetailsView(
+                        urlPath: urlPath
+                    )
                 }
             }
         }
@@ -73,6 +92,9 @@ struct ListView: View {
             mostSeen = await repo.getFeedMovies(FeedIds.mostSeen.rawValue)
             recommended = await repo.getFeedMovies(FeedIds.recommended.rawValue)
             festival = await repo.getFeedMovies(FeedIds.festival.rawValue)
+            focus = await repo.getFeedMovies(FeedIds.focus.rawValue)
+            newArrivals = await repo.getFeedMovies(FeedIds.newArrivals.rawValue)
+            buyRent = await repo.getFeedMovies(FeedIds.buyRent.rawValue)
         }
     }
 }

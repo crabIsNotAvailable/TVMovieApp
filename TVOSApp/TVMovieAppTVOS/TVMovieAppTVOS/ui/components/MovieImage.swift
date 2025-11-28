@@ -10,42 +10,59 @@ import SwiftUI
 
 struct MovieImage: View {
     let url: String
-    let variant: String     // "poster" or "landscape"
+    let variant: String
     let onSelect: () -> Void
+
+    @FocusState private var focused: Bool
 
     private var aspect: CGFloat {
         variant == "poster" ? (2/3) : (16/9)
     }
 
-    private var finalUrl: String {
-        toMovieImage(url, type: variant)
+    private var baseWidth: CGFloat {
+        variant == "poster" ? 400 : 600
     }
 
-    private var width: CGFloat {
-        variant == "poster" ? 160 : 380
+    // ✅ MAX SIZE (focused size!)
+    private var maxWidth: CGFloat {
+        baseWidth * 1.15
+    }
+
+    private var maxHeight: CGFloat {
+        maxWidth / aspect
     }
 
     var body: some View {
-        let height = width / aspect
+        let currentWidth = focused ? maxWidth : baseWidth
+        let currentHeight = currentWidth / aspect
 
-        AsyncImage(url: URL(string: finalUrl)) { phase in
-            switch phase {
-            case .success(let img):
-                img.resizable()
-                    .aspectRatio(aspect, contentMode: .fill)
-                    .frame(width: width, height: height)
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                    .shadow(radius: 12)
-                    .scaleEffectOnTVFocus()
-            default:
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(.gray.opacity(0.3))
-                    .frame(width: width, height: height)
+        ZStack {
+            AsyncImage(url: URL(string: toMovieImage(url, type: variant))) { phase in
+                switch phase {
+                case .success(let img):
+                    img
+                        .resizable()
+                        .aspectRatio(aspect, contentMode: .fill)
+
+                default:
+                    Color.gray.opacity(0.3)
+                }
             }
+            .frame(width: currentWidth, height: currentHeight)
+            .clipped()
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .shadow(radius: focused ? 22 : 12)
+            .animation(.easeOut(duration: 0.22), value: focused)
         }
+        // ✅ OUTER BOX IS ALWAYS THE MAX SIZE
+        .frame(width: maxWidth, height: maxHeight)
+        .focusable(true)
+        .focused($focused)
         .onTapGesture { onSelect() }
     }
 }
+
+
 
 extension View {
     func scaleEffectOnTVFocus() -> some View {
@@ -60,7 +77,12 @@ struct FocusScaleModifier: ViewModifier {
         content
             .focusable(true)
             .focused($focused)
-            .scaleEffect(focused ? 1.15 : 1.0)
             .animation(.easeOut(duration: 0.2), value: focused)
+            .overlay(
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(Color.clear) // keeps layout stable
+            )
+            .scaleEffect(1.0)
     }
 }
+

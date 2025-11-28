@@ -23,7 +23,7 @@ struct HorizontalGallery: View {
                             url: movie.imageUrl,
                             variant: variant
                         ) {
-                            onSelect(movie)   // ✅ forward selection
+                            onSelect(movie)
                         }
                     }
                 }

@@ -15,8 +15,8 @@ struct MovieImage: View {
     var body: some View {
         let isPoster = (variant == "poster")
 
-        let width: CGFloat  = isPoster ? 110 : 180
-        let height: CGFloat = isPoster ? 165 : 100
+        let width: CGFloat  = isPoster ? 160 : 320
+        let height: CGFloat = isPoster ? 240 : 180
         let ratio: CGFloat  = isPoster ? (2.0/3.0) : (16.0/9.0)
 
         AsyncImage(url: URL(string: url)) { img in
