@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { FeedMovie } from "../../../models/feed";
 import { clamp, signedDistanceFor } from "../../../utils/mathHelpers";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   items: FeedMovie[];
   index: number;
-  setIndex: (i: number) => void;
+  setIndex: React.Dispatch<React.SetStateAction<number>>;
   neighborRadius?: number;
 }
 
@@ -15,12 +16,44 @@ export const CascadingCarousel: React.FC<Props> = ({
   setIndex,
   neighborRadius = 3,
 }) => {
-  const n = items.length;
+  const navigate = useNavigate();
+  const autoplayRef = useRef<number | null>(null);
 
+  const n = items.length;
   const clampIndex = (i: number) => ((i % n) + n) % n;
 
-  const next = () => setIndex(clampIndex(index + 1));
-  const prev = () => setIndex(clampIndex(index - 1));
+  const stopAutoplay = () => {
+    if (autoplayRef.current !== null) {
+      clearInterval(autoplayRef.current);
+      autoplayRef.current = null;
+    }
+  };
+
+  const startAutoplay = () => {
+    stopAutoplay();
+    autoplayRef.current = window.setInterval(() => {
+      setIndex((prev) => clampIndex(prev + 1));
+    }, 5000);
+  };
+
+  const next = () => {
+    stopAutoplay();
+    setIndex(clampIndex(index + 1));
+    startAutoplay();
+  };
+
+  const prev = () => {
+    stopAutoplay();
+    setIndex(clampIndex(index - 1));
+    startAutoplay();
+  };
+
+  useEffect(() => {
+    if (items.length > 1) {
+      startAutoplay();
+    }
+    return stopAutoplay;
+  }, [items.length]);
 
   return (
     <div
@@ -41,6 +74,7 @@ export const CascadingCarousel: React.FC<Props> = ({
       <button onClick={next} style={control("right")}>
         ▶
       </button>
+
       <div>
         {items.map((item, i) => {
           const d = signedDistanceFor(i, index, n);
@@ -57,7 +91,15 @@ export const CascadingCarousel: React.FC<Props> = ({
           return (
             <div
               key={item.id}
-              onClick={() => setIndex(clampIndex(i))}
+              onClick={() => {
+                stopAutoplay();
+                if (d === 0) {
+                  navigate(`/movie/${item.urlPath}`);
+                } else {
+                  setIndex(clampIndex(i));
+                }
+                startAutoplay();
+              }}
               style={{
                 position: "absolute",
                 left: "50%",
@@ -75,8 +117,6 @@ export const CascadingCarousel: React.FC<Props> = ({
                   d === 0
                     ? "0 18px 50px rgba(0,0,0,0.65)"
                     : "0 10px 30px rgba(0,0,0,0.45)",
-
-                // ⭐ THIS IS THE FADE YOU WANT
               }}
             >
               <img
@@ -85,19 +125,6 @@ export const CascadingCarousel: React.FC<Props> = ({
                 style={{ width: "100%", height: "100%", objectFit: "cover" }}
                 draggable={false}
               />
-
-              {d === 0 && (
-                <div
-                  style={{
-                    position: "absolute",
-                    bottom: 14,
-                    left: 20,
-                    color: "white",
-                    fontSize: 20,
-                    textShadow: "0 0 8px rgba(0,0,0,0.8)",
-                  }}
-                ></div>
-              )}
             </div>
           );
         })}

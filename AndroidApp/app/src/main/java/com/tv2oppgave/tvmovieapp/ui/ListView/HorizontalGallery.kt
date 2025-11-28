@@ -49,10 +49,9 @@ fun HorizontalGallery(
                         }
                     }
                 }
-                .padding(horizontal = 8.dp)
         ) {
             items(items) { item ->
-                val width = if (variant == "poster") 120.dp else 160.dp
+                val width = if (variant == "poster") 160.dp else 220.dp
                 val aspect = if (variant == "poster") (2f / 3f) else (16f / 9f)
                 val height = (width.value / aspect).dp
                 AsyncImage(
@@ -61,7 +60,9 @@ fun HorizontalGallery(
                     modifier = Modifier
                         .padding(end = 5.dp)
                         .size(width, height)
-                        .clickable { onSelect(item) }
+                        .clip(RoundedCornerShape(5.dp))
+                        .clickable { onSelect(item)
+                        }
                 )
             }
         }

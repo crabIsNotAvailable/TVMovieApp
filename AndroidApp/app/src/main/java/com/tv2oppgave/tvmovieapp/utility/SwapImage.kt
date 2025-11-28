@@ -27,8 +27,8 @@ fun SwapImage(url: String?, type: String = "landscape"): String {
         params["height"] = "900"
     } else {
         params["location"] = "list"
-        params["width"] = "1920"
-        params["height"] = "1080"
+        params["width"] = "960"
+        params["height"] = "540"
     }
 
     // Build new query string
