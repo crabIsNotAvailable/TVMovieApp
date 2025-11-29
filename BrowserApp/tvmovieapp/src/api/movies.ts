@@ -3,7 +3,6 @@ import { MovieDetail } from "../models/movie";
 
 const API_BASE = "http://localhost:8080/api/Movies";
 
-// Fetch all feeds (root list)
 export async function fetchMovieFeeds(): Promise<RootFeedResponse> {
   const res = await fetch(`${API_BASE}/feeds`);
   if (!res.ok) {
@@ -12,7 +11,6 @@ export async function fetchMovieFeeds(): Promise<RootFeedResponse> {
   return res.json();
 }
 
-// Fetch a single feed by TV2 feedId
 export async function fetchFeedById(feedId: string): Promise<Feed> {
   const res = await fetch(`${API_BASE}/feed/id/${feedId}`);
   if (!res.ok) {
@@ -21,7 +19,6 @@ export async function fetchFeedById(feedId: string): Promise<Feed> {
   return res.json();
 }
 
-// Fetch movie detail
 export async function fetchMovieDetail(urlPath: string): Promise<MovieDetail> {
   const normalizedPath = urlPath.replace(/^\//, "");
 

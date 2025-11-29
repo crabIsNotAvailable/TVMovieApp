@@ -1,16 +1,24 @@
-import React, { useEffect, useRef } from "react";
-import { FeedMovie } from "../../../models/feed";
-import { clamp, signedDistanceFor } from "../../../utils/mathHelpers";
+import React, {
+  CSSProperties,
+  Dispatch,
+  FC,
+  SetStateAction,
+  useEffect,
+  useRef,
+} from "react";
+import { FeedMovie } from "../../../../models/feed";
+import { clamp, signedDistanceFor } from "../../../../utils/mathHelpers";
 import { useNavigate } from "react-router-dom";
+import { control } from "./ControlCSS";
 
 interface Props {
   items: FeedMovie[];
   index: number;
-  setIndex: React.Dispatch<React.SetStateAction<number>>;
+  setIndex: Dispatch<SetStateAction<number>>;
   neighborRadius?: number;
 }
 
-export const CascadingCarousel: React.FC<Props> = ({
+export const CascadingCarousel: FC<Props> = ({
   items,
   index,
   setIndex,
@@ -132,20 +140,3 @@ export const CascadingCarousel: React.FC<Props> = ({
     </div>
   );
 };
-
-function control(side: "left" | "right"): React.CSSProperties {
-  return {
-    position: "absolute",
-    top: "50%",
-    transform: "translateY(-50%)",
-    fontSize: "1.6rem",
-    background: "rgba(0,0,0,0.5)",
-    color: "white",
-    border: "none",
-    padding: "12px 14px",
-    cursor: "pointer",
-    borderRadius: 8,
-    zIndex: 2000,
-    [side]: -72,
-  };
-}

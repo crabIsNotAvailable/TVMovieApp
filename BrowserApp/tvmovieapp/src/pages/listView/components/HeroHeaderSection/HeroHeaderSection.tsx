@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { fetchFeedById } from "../../../api/movies";
-import { FeedMovie } from "../../../models/feed";
+import { FC, useEffect, useState } from "react";
+import { fetchFeedById } from "../../../../api/movies";
+import { FeedMovie } from "../../../../models/feed";
 import { CascadingCarousel } from "./CascadingCarousel";
 
-interface HighlightedSectionProps {
+interface HeroHeaderSectionProps {
   feedId: string;
   title?: string;
 }
 
-export const HighlightedSection: React.FC<HighlightedSectionProps> = ({
+export const HeroHeaderSection: FC<HeroHeaderSectionProps> = ({
   feedId,
   title,
 }) => {
@@ -16,7 +16,6 @@ export const HighlightedSection: React.FC<HighlightedSectionProps> = ({
   const [index, setIndex] = useState(0);
   const [loading, setLoading] = useState(true);
 
-  // ✔ HOOK (must be unconditional)
   useEffect(() => {
     let mounted = true;
     async function load() {
@@ -38,7 +37,6 @@ export const HighlightedSection: React.FC<HighlightedSectionProps> = ({
     };
   }, [feedId]);
 
-  // ✔ SAFE: This is AFTER hooks, so it’s valid
   if (loading) return <div>Loading…</div>;
   if (!items.length) return <div>No items found.</div>;
 

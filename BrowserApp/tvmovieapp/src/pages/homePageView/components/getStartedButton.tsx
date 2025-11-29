@@ -27,10 +27,7 @@ export default function GetStartedOverlay() {
         `,
       }}
     >
-      <Link
-        to="/explore"
-        style={{ textDecoration: "none" }} // prevent underline
-      >
+      <Link to="/explore" style={{ textDecoration: "none" }}>
         <button
           style={{
             position: "absolute",

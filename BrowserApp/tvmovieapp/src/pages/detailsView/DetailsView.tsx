@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { MovieDetail } from "../../models/movie";
 import { fetchMovieDetail } from "../../api/movies";
 import { Back } from "../../components/icons/Back";
 
-export const DetailsView: React.FC = () => {
+export const DetailsView: FC = () => {
   const { "*": urlPath } = useParams();
   const navigate = useNavigate();
 
@@ -138,7 +138,6 @@ export const DetailsView: React.FC = () => {
         <div style={{ maxWidth: 900, margin: "0 auto" }}>
           <h1 style={{ marginBottom: 12, color: "#cca90d" }}>{movie.title}</h1>
 
-          {/* Meta */}
           <div
             style={{
               display: "flex",
@@ -153,7 +152,6 @@ export const DetailsView: React.FC = () => {
             {movie.durationMinutes && <span>{movie.durationMinutes} min</span>}
           </div>
 
-          {/* Genres */}
           {movie.genres.length > 0 && (
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
               {movie.genres.map((g) => (
@@ -172,7 +170,6 @@ export const DetailsView: React.FC = () => {
             </div>
           )}
 
-          {/* Description */}
           <p
             style={{
               marginTop: 24,
@@ -184,7 +181,6 @@ export const DetailsView: React.FC = () => {
             {movie.description}
           </p>
 
-          {/* Cast */}
           {movie.cast.length > 0 && (
             <div style={{ marginTop: 32 }}>
               <h3 style={{ marginBottom: 8, color: "#cca90d" }}>Cast</h3>

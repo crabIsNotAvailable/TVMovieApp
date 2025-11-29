@@ -22,8 +22,6 @@ export default function Logo() {
         top: "20px",
         left: "2%",
         zIndex: 9999,
-
-        // fade out smoothly
         opacity: hidden ? 0 : 1,
         transition: "opacity 0.4s ease",
         pointerEvents: hidden ? "none" : "auto",

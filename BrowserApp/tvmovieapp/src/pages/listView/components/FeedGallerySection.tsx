@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, FC } from "react";
 import { fetchFeedById } from "../../../api/movies";
 import { FeedMovie } from "../../../models/feed";
-import { HorizontalGallery } from "../../../components/CardGallery";
+import { HorizontalGallery } from "../../../components/cardGallery/CardGallery";
 
 interface FeedGalleryProps {
   feedId: string;
@@ -9,7 +9,7 @@ interface FeedGalleryProps {
   title?: string;
 }
 
-export const FeedGallerySection: React.FC<FeedGalleryProps> = ({
+export const FeedGallerySection: FC<FeedGalleryProps> = ({
   feedId,
   variant = "poster",
   title,

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { fetchFeedById, fetchMovieFeeds } from "../../api/movies";
-import { FeedContentItem, FeedMovie } from "../../models/feed";
+import { useEffect, useState } from "react";
+import { fetchFeedById } from "../../api/movies";
+import { FeedMovie } from "../../models/feed";
 import MovieScroller from "./components/movieScroller";
 import PosterScroller from "./components/PosterScroller";
 import GetStartedSection from "./components/getStartedButton";
@@ -14,14 +14,11 @@ export default function HomePageView() {
   useEffect(() => {
     async function load() {
       try {
-        // Fetching each feed separately
         const mostSeenFeed = await fetchFeedById(FeedIds.MostSeen);
         const newArrivalsFeed = await fetchFeedById(FeedIds.NewArrivals);
 
-        // Feed.content is already the array of feed movies
         setMostSeen(mostSeenFeed.movies ?? []);
         setNewArrivals(newArrivalsFeed.movies ?? []);
-        // Smooth fade-in
         setTimeout(() => setLoaded(true), 300);
       } catch (err) {
         console.error("Homepage failed:", err);
