@@ -1,13 +1,12 @@
 package com.tv2oppgave.tvmovieapp.data
 
-import com.google.gson.Gson
 import com.tv2oppgave.tvmovieapp.data.models.FeedContentItem
-import com.tv2oppgave.tvmovieapp.data.models.FeedContentItemEntity
+import com.tv2oppgave.tvmovieapp.data.models.FeedItemEntity
 import com.tv2oppgave.tvmovieapp.data.models.MovieDetailResponse
 import com.tv2oppgave.tvmovieapp.data.models.MovieListItem
 
-fun FeedContentItem.toEntity(feedId: String): FeedContentItemEntity {
-    return FeedContentItemEntity(
+fun FeedContentItem.toEntity(feedId: String): FeedItemEntity {
+    return FeedItemEntity(
         id = this.id,
         title = this.title,
         imageSrc = this.imageUrl,
@@ -17,7 +16,7 @@ fun FeedContentItem.toEntity(feedId: String): FeedContentItemEntity {
     )
 }
 
-fun FeedContentItemEntity.toDomain(): MovieListItem =
+fun FeedItemEntity.toDomain(): MovieListItem =
     MovieListItem(
         id = this.id,
         title = this.title,

@@ -3,11 +3,11 @@ package com.tv2oppgave.tvmovieapp.data
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.tv2oppgave.tvmovieapp.data.models.FeedContentItemEntity
+import com.tv2oppgave.tvmovieapp.data.models.FeedItemEntity
 
 @Database(
-    entities = [FeedContentItemEntity::class],
-    version = 5,
+    entities = [FeedItemEntity::class],
+    version = 6,
     exportSchema = false
 )
 @TypeConverters(Converters::class)

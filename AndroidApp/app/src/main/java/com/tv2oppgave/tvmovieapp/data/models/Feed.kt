@@ -32,10 +32,6 @@ data class FeedTheme(
     val name: String? = null
 )
 
-/**
- * FeedContentItem - the list item in each feed (movie / promo / section)
- * Fields are intentionally conservative (nullable) because API is inconsistent.
- */
 data class FeedContentItem(
     val id: String,
     val title: String,
@@ -43,9 +39,9 @@ data class FeedContentItem(
     val urlPath: String
 )
 
-data class FeedImage(
-    val src: String? = null,
-    val location: String? = null,
-    val width: Int? = null,
-    val height: Int? = null
+data class FeedResponse(
+    val id: String,
+    val title: String,
+    val section_title: String,
+    val movies: List<FeedContentItem>
 )

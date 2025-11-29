@@ -8,7 +8,6 @@ fun SwapImage(url: String?, type: String = "landscape"): String {
     val base = split[0]
     val query = split.getOrNull(1).orEmpty()
 
-    // Parse query string into a MutableMap<String, String>
     val params = mutableMapOf<String, String>()
 
     query.split("&").forEach { part ->
@@ -20,7 +19,6 @@ fun SwapImage(url: String?, type: String = "landscape"): String {
         }
     }
 
-    // Apply TV2 poster/landscape logic
     if (type == "poster") {
         params["location"] = "moviePoster"
         params["width"] = "600"
@@ -31,7 +29,6 @@ fun SwapImage(url: String?, type: String = "landscape"): String {
         params["height"] = "540"
     }
 
-    // Build new query string
     val newQuery = params.entries.joinToString("&") { "${it.key}=${it.value}" }
 
     return "$base?$newQuery"

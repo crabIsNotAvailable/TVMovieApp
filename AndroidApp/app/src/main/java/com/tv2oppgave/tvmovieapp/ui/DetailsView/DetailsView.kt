@@ -1,18 +1,11 @@
 package com.tv2oppgave.tvmovieapp.ui.details
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import coil.compose.AsyncImage
-import com.tv2oppgave.tvmovieapp.data.MovieDetailUiModel
 
 @Composable
 fun MovieDetailScreen(
@@ -24,10 +17,12 @@ fun MovieDetailScreen(
         viewModel.loadMovie(urlPath)
     }
 
-    val state by viewModel.state.collectAsState()
+    val movie by viewModel.movie.collectAsState()
+    val isLoading by viewModel.isLoading.collectAsState()
+    val isError by viewModel.isError.collectAsState()
 
-    when (state) {
-        is MovieDetailUiState.Loading -> {
+    when {
+        isLoading -> {
             Box(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center
@@ -36,7 +31,7 @@ fun MovieDetailScreen(
             }
         }
 
-        is MovieDetailUiState.Error -> {
+        isError -> {
             Box(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center
@@ -45,10 +40,9 @@ fun MovieDetailScreen(
             }
         }
 
-        is MovieDetailUiState.Success -> {
-            val success = state as MovieDetailUiState.Success
+        movie != null -> {
             MovieDetailContent(
-                movie = success.movie,
+                movie = movie!!,
                 onBack = { navController.popBackStack() }
             )
         }

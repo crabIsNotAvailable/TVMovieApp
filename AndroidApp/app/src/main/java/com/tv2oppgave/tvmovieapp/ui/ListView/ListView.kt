@@ -1,13 +1,13 @@
 package com.tv2oppgave.tvmovieapp.ui.ListView
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.tv2oppgave.tvmovieapp.data.models.FeedIds
+import com.tv2oppgave.tvmovieapp.ui.ListView.components.FeedView
+import com.tv2oppgave.tvmovieapp.ui.ListView.components.HighlightHero
 
 @Composable
 fun ListView(

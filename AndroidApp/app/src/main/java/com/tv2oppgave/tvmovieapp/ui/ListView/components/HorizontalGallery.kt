@@ -1,4 +1,4 @@
-package com.tv2oppgave.tvmovieapp.ui.ListView
+package com.tv2oppgave.tvmovieapp.ui.ListView.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -30,6 +30,7 @@ fun HorizontalGallery(
     variant: String,
     onSelect: (MovieListItem) -> Unit = {}
 ) {
+    PreloadImages(items.map { SwapImage(it.imageUrl, variant) })
     val listState = rememberLazyListState()
 
     val scope = rememberCoroutineScope()
@@ -50,7 +51,10 @@ fun HorizontalGallery(
                     }
                 }
         ) {
-            items(items) { item ->
+            items(
+                items,
+                key = { it.id }
+            ) { item ->
                 val width = if (variant == "poster") 160.dp else 220.dp
                 val aspect = if (variant == "poster") (2f / 3f) else (16f / 9f)
                 val height = (width.value / aspect).dp

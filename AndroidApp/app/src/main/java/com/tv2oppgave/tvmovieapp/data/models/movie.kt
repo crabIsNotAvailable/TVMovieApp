@@ -22,3 +22,9 @@ data class MovieImageVariant(
     val width: Int? = null,
     val height: Int? = null
 )
+data class MovieListItem(
+    val id: String,
+    val title: String,
+    val imageUrl: String?,
+    val urlPath: String
+)
