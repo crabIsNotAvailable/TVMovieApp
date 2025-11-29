@@ -1,79 +1,71 @@
 namespace Backend.Models.Feed;
 
 public sealed record RootFeedResponse(
-    string layout,
-    List<Feed> feeds
+    string Layout,
+    List<Feed> Feeds
 );
 
 public sealed record Feed(
-    string id,
-    string title,
-    string? section_title,
-    string type,
-    string self_uri,
-    int size,
-    int start,
-    int total,
-    FeedStyles? styles,
-    System.Collections.Generic.List<string>? experiments,
-    TrackingInfo? t,
-    System.Collections.Generic.List<FeedContentItem> content
+    string Id,
+    string Title,
+    string? Section_Title,
+    string Type,
+    string Self_Uri,
+    int Size,
+    int Start,
+    int Total,
+    FeedStyles? Styles,
+    List<string>? Experiments,
+    TrackingInfo? T,
+    List<FeedContentItem> Content
 );
 
 public sealed record FeedStyles(
-    FeedLayout layout,
-    FeedTheme theme
+    FeedLayout Layout,
+    FeedTheme Theme
 );
 
 public sealed record FeedLayout(
-    string name,
-    string? text,
-    string? aspect
+    string Name,
+    string? Text,
+    string? Aspect
 );
 
 public sealed record FeedTheme(
-    string name
+    string Name
 );
 
 public sealed record TrackingInfo(
-    string c
+    string C
 );
 
 public sealed record FeedContentItem(
-    string content_id,
-    string gpid,
-    string title,
-    string? original_title,
-    string? description,
-    FeedImage image,
-    bool downloadable,
-    bool autoplay,
-    string url,
-    System.Collections.Generic.List<Label>? labels,
-    TrackingInfo? t
+    string Content_Id,
+    string Gpid,
+    string Title,
+    string? Original_Title,
+    string? Description,
+    FeedImage Image,
+    bool Downloadable,
+    bool Autoplay,
+    string Url,
+    System.Collections.Generic.List<Label>? Labels,
+    TrackingInfo? T
 );
 public class SingleFeedResponse
 {
-    public string id { get; set; }
-    public string title { get; set; }
-    public string? section_title { get; set; }
+    public string Id { get; set; }
+    public string Title { get; set; }
+    public string? Section_Title { get; set; }
 
-    public List<FeedContentItem> content { get; set; } = new();
-    public List<FeedMovieItem> movies { get; set; } = new();
+    public List<FeedContentItem> Content { get; set; } = new();
 }
 
-public class FeedMovieItem
-{
-    public string id { get; set; }
-    public string title { get; set; }
-    public string imageUrl { get; set; }
-    public string urlPath { get; set; }
-}
 public sealed record FeedImage(
-    string src
+    string Src
 );
 
 public sealed record Label(
-    string text,
-    string type
+    string Text,
+    string Type
 );

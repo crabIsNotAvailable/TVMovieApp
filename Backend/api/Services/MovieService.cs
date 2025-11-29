@@ -26,14 +26,14 @@ public class MovieService : IMovieService
 
 
 
-        if (feed.content != null && feed.content.Any())
+        if (feed.Content != null && feed.Content.Any())
         {
             // content[] format
             return new feed_category_dto(
-                id: feed.id,
-                title: feed.title,
-                section_title: feed.section_title,
-                movies: feed.content
+                id: feed.Id,
+                title: feed.Title,
+                section_title: feed.Section_Title,
+                movies: feed.Content
                     .Select(MovieMapper.ToListDto)
                     .ToList()
             );
@@ -41,10 +41,6 @@ public class MovieService : IMovieService
 
         return null;
     }
-
-
-
-
 
     public async Task<MovieDetailDto?> GetMovieDetail(
         string urlPath,
@@ -55,19 +51,6 @@ public class MovieService : IMovieService
             return null;
 
         return MovieMapper.ToDetailDto(page);
-    }
-
-
-    public async Task<List<MovieListItemDto>> SearchMovies(string query, CancellationToken ct = default)
-    {
-        var root = await GetAllFeeds(ct);
-        if (root == null) return new List<MovieListItemDto>();
-
-        return root.feeds
-            .SelectMany(f => f.content)
-            .Where(m => m.title.Contains(query, StringComparison.OrdinalIgnoreCase))
-            .Select(MovieMapper.ToListDto)
-            .ToList();
     }
 }
 

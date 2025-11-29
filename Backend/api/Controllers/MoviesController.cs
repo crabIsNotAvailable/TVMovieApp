@@ -14,7 +14,6 @@ public class MoviesController : ControllerBase
         _service = service;
     }
 
-    //  Return all feeds
     [HttpGet("feeds")]
     public async Task<IActionResult> GetAllFeeds()
     {
@@ -23,7 +22,6 @@ public class MoviesController : ControllerBase
     }
 
 
-    //  Feed by TV2 feed ID
     [HttpGet("feed/id/{feedId}")]
     public async Task<IActionResult> GetFeedById(string feedId)
     {
@@ -35,7 +33,6 @@ public class MoviesController : ControllerBase
         return Ok(feed);
     }
 
-    //  Movie detail
     [HttpGet("detail/{*urlPath}")]
     public async Task<IActionResult> GetMovieDetail(string urlPath)
     {
@@ -43,13 +40,5 @@ public class MoviesController : ControllerBase
         if (detail == null)
             return NotFound();
         return Ok(detail);
-    }
-
-    //  Search for movies across all feeds
-    [HttpGet("search")]
-    public async Task<IActionResult> SearchMovies([FromQuery] string query)
-    {
-        var results = await _service.SearchMovies(query);
-        return Ok(results);
     }
 }

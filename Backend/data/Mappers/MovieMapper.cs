@@ -8,17 +8,16 @@ public static class MovieMapper
 {
     public static MovieListItemDto ToListDto(FeedContentItem item) =>
     new(
-        Id: item.content_id,
-        Title: item.title,
-        ImageUrl: item.image?.src ?? "",
-        UrlPath: item.url
+        Id: item.Content_Id,
+        Title: item.Title,
+        ImageUrl: item.Image?.Src ?? "",
+        UrlPath: item.Url
     );
 
     public static MovieDetailDto ToDetailDto(MoviePageResponse detail)
 {
     var meta = detail.Details?.Metainfo;
 
-    // --- duration (e.g. "110 min") ---
     int? durationMinutes = null;
     var durationMeta = meta?
         .FirstOrDefault(x => x.Text != null && x.Text.Contains("min"));
@@ -32,7 +31,6 @@ public static class MovieMapper
         }
     }
 
-    // --- year (e.g. "2025") ---
     int? year = null;
     var yearMeta = meta?
         .FirstOrDefault(x => x.Text != null &&
@@ -45,19 +43,16 @@ public static class MovieMapper
     }
 
 
-    // --- age rating ("12+") ---
     var ageRating = meta?
         .FirstOrDefault(x => x.Type == "age")?
         .Text;
 
-    // --- genres ---
     var genres = meta?
         .Where(x => x.Type == "genre" && !string.IsNullOrWhiteSpace(x.Text))
         .Select(x => x.Text!)
         .ToList()
         ?? new List<string>();
 
-    // --- cast ---
     var cast = detail.Details?.CastAndCrew?
         .Where(c => !string.IsNullOrWhiteSpace(c.Text))
         .Select(c => c.Text!)

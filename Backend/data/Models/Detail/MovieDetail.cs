@@ -24,8 +24,6 @@ public sealed class TrackingInfo
 public sealed class PlayerBlock
 {
     public DetailImage? Image { get; set; }
-
-    public string? Url { get; set; }
 }
 
 
@@ -50,18 +48,12 @@ public sealed class MetaInfoItem
 {
     public string? Text { get; set; }
     public string? Type { get; set; }
-    public string? Value { get; set; }
 
-    [JsonPropertyName("alt_text")]
-    public string? AltText { get; set; }
 }
 
 
 public sealed class CastItem
 {
     public string? Text { get; set; }
-
-    [JsonPropertyName("filter_query")]
-    public string? FilterQuery { get; set; }
 }
 

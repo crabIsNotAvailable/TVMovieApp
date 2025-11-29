@@ -1,5 +1,4 @@
 using Backend.Dtos;
-using Backend.Models.Feed;
 
 public record feed_category_dto(
     string id,

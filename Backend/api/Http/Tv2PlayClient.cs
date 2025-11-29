@@ -29,7 +29,6 @@ public class Tv2PlayClient : ITv2PlayClient
 
     public async Task<RootFeedResponse?> GetFeedAsync(string feedPath, CancellationToken ct = default)
     {
-        // feedPath example: "/v4/feeds/page_01jwxh2p1me02sbhyxmht24cbp"
         var res = await _client.GetAsync(feedPath, ct);
         res.EnsureSuccessStatusCode();
         var stream = await res.Content.ReadAsStreamAsync(ct);
@@ -49,7 +48,6 @@ public class Tv2PlayClient : ITv2PlayClient
 
     public async Task<MoviePageResponse?> GetContentByPathAsync(string path, CancellationToken ct = default)
     {
-        // path example: "film/the-fantastic-four-first-steps-e7zthsn5"
         var url = $"/v4/content/path/{path.TrimStart('/')}";
         var res = await _client.GetAsync(url, ct);
         res.EnsureSuccessStatusCode();

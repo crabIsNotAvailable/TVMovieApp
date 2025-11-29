@@ -11,7 +11,6 @@ namespace Backend.Services
 
         Task<MovieDetailDto?> GetMovieDetail(string urlPath, CancellationToken ct = default);
 
-        Task<List<MovieListItemDto>> SearchMovies(string query, CancellationToken ct = default);
     }
 
 }
