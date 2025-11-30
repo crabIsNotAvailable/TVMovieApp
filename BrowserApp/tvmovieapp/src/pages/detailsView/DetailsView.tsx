@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { MovieDetail } from "../../models/movie";
 import { fetchMovieDetail } from "../../api/movies";
 import { Back } from "../../components/icons/Back";
+import { PlayIcon } from "../../components/icons/PlayButton";
 
 export const DetailsView: FC = () => {
   const { "*": urlPath } = useParams();
@@ -91,6 +92,22 @@ export const DetailsView: FC = () => {
             }}
           />
         )}
+        {/* Fake play button */}
+        <div
+          style={{
+            position: "absolute",
+            width: 72,
+            height: 72,
+            borderRadius: "50%",
+            background: "rgba(0,0,0,0.6)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: "default",
+          }}
+        >
+          <PlayIcon />
+        </div>
 
         <div
           style={{

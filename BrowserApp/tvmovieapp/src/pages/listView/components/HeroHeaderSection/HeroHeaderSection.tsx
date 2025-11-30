@@ -45,21 +45,46 @@ export const HeroHeaderSection: FC<HeroHeaderSectionProps> = ({
       style={{
         marginLeft: "5rem",
         marginRight: "5rem",
-        marginBottom: "4rem",
       }}
     >
-      {title && (
+      <CascadingCarousel items={items} index={index} setIndex={setIndex} />
+      <div
+        style={{
+          width: "90vw",
+          display: "flex",
+          justifyContent: "center",
+          transform: "translateY(-3rem)",
+        }}
+      >
         <h2
+          key={index}
           style={{
-            color: "#cca90d",
-            fontSize: "3rem",
-            marginBottom: "1rem",
+            textAlign: "center",
+            opacity: 1,
+            animation: "fadeInOut 0.5s ease-in-out",
+            fontFamily: "fantasy",
+            fontSize: "2.5rem",
+
+            willChange: "filter",
+
+            filter: `
+              drop-shadow(0 0 80px rgba(218, 170, 0, 0.82))
+              drop-shadow(0 0 0px rgba(210,170,20,0.5))
+              drop-shadow(0 0 20px rgba(0,0,0,0.9))
+            `,
           }}
         >
-          {title}
+          {items[index]?.title?.toUpperCase()}
         </h2>
-      )}
-      <CascadingCarousel items={items} index={index} setIndex={setIndex} />
+        <style>
+          {`
+            @keyframes fadeInOut {
+              0% { opacity: 0; }
+              100% { opacity: 1; }
+            }
+          `}
+        </style>
+      </div>
     </div>
   );
 };
