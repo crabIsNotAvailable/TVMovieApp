@@ -1,6 +1,6 @@
 using Backend.Dtos;
 
-public record feed_category_dto(
+public record feedCategoryDto(
     string id,
     string title,
     string? section_title,

@@ -19,7 +19,7 @@ public class MovieService : IMovieService
         return await _client.GetFeedAsync("/v4/feeds/page_01jwxh2p1me02sbhyxmht24cbp", ct);
     }
 
-    public async Task<feed_category_dto?> GetFeedById(string feedId, CancellationToken ct = default)
+    public async Task<feedCategoryDto?> GetFeedById(string feedId, CancellationToken ct = default)
     {
         var feed = await _client.GetSingleFeedAsync($"/v4/feed/{feedId}", ct);
         if (feed == null) return null;
@@ -29,7 +29,7 @@ public class MovieService : IMovieService
         if (feed.Content != null && feed.Content.Any())
         {
             // content[] format
-            return new feed_category_dto(
+            return new feedCategoryDto(
                 id: feed.Id,
                 title: feed.Title,
                 section_title: feed.Section_Title,

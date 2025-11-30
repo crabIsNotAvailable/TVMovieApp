@@ -36,6 +36,9 @@ Thumbs.db
 .gradle/
 local.properties
 build/
+/shelf/
+/workspace.xml
+
 
 # --- iOS ---
 xcuserdata/

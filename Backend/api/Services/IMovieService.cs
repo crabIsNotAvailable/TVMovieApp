@@ -7,7 +7,7 @@ namespace Backend.Services
     {
         Task<RootFeedResponse?> GetAllFeeds(CancellationToken ct = default);
 
-        Task<feed_category_dto?> GetFeedById(string feedId, CancellationToken ct = default);
+        Task<feedCategoryDto?> GetFeedById(string feedId, CancellationToken ct = default);
 
         Task<MovieDetailDto?> GetMovieDetail(string urlPath, CancellationToken ct = default);
 

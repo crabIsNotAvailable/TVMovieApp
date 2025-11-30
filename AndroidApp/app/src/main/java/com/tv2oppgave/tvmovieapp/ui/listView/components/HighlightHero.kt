@@ -15,6 +15,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
@@ -31,7 +32,20 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Shadow
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.togetherWith
+
 import com.tv2oppgave.tvmovieapp.data.MovieRepository
 
 @Composable
@@ -60,71 +74,97 @@ fun HighlightHero(
 
     if (movies.isEmpty()) return
 
-    val movie = movies[index]
+    @OptIn(ExperimentalAnimationApi::class)
+    AnimatedContent(
+        targetState = index,
+        transitionSpec = {
+            fadeIn(animationSpec = tween(500)) togetherWith
+                    fadeOut(animationSpec = tween(500))
+        },
+        label = "HeroFade"
+    ) { animatedIndex ->
 
-    Column(modifier = Modifier.padding(bottom = 16.dp)) {
+        val movie = movies[animatedIndex]
 
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .aspectRatio(16f / 9f)
+        Column(modifier = Modifier.padding(bottom = 16.dp)) {
 
-        ) {
-
-            AsyncImage(
-                model = movie.imageUrl,
-                contentDescription = movie.title,
-                contentScale = ContentScale.Crop,
+            Box(
                 modifier = Modifier
-                    .fillMaxSize()
-                    .clickable {
-                        navController.navigate(
-                            "movie/${Uri.encode(movie.urlPath.removePrefix("/"))}"
-                        )
-                    }
+                    .fillMaxWidth()
+                    .aspectRatio(16f / 9f)
+            ) {
+
+                AsyncImage(
+                    model = movie.imageUrl,
+                    contentDescription = movie.title,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .clickable {
+                            navController.navigate(
+                                "movie/${Uri.encode(movie.urlPath.removePrefix("/"))}"
+                            )
+                        }
+                )
+
+                Box(
+                    modifier = Modifier
+                        .padding(start = 8.dp)
+                        .size(40.dp)
+                        .clip(RoundedCornerShape(20.dp))
+                        .background(Color.Black.copy(alpha = 0.6f))
+                        .clickable {
+                            index = (index - 1 + movies.size) % movies.size
+                        }
+                        .align(Alignment.CenterStart),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                        contentDescription = "Previous",
+                        tint = Color.White
+                    )
+                }
+
+                Box(
+                    modifier = Modifier
+                        .padding(end = 8.dp)
+                        .size(40.dp)
+                        .clip(RoundedCornerShape(20.dp))
+                        .background(Color.Black.copy(alpha = 0.6f))
+                        .clickable {
+                            index = (index + 1) % movies.size
+                        }
+                        .align(Alignment.CenterEnd),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.ArrowBack,
+                        contentDescription = "Next",
+                        modifier = Modifier.rotate(180f),
+                        tint = Color.White
+                    )
+                }
+            }
+
+            Text(
+                text = movie.title.uppercase(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 12.dp),
+                color = Color(0xFFD4AF37),
+                textAlign = TextAlign.Center,
+                style = TextStyle(
+                    fontSize = 18.sp,
+                    fontFamily = FontFamily.Default,
+                    shadow = Shadow(
+                        color = Color(0xFFD4AF37),
+                        offset = Offset.Zero,
+                        blurRadius = 80f // softer glow
+                    )
+                )
             )
-
-            // LEFT
-            Box(
-                modifier = Modifier
-                    .padding(start = 8.dp)
-                    .size(40.dp)
-                    .clip(RoundedCornerShape(20.dp))
-                    .background(Color.Black.copy(alpha = 0.6f))
-                    .clickable {
-                        index = (index - 1 + movies.size) % movies.size
-                    }
-                    .align(Alignment.CenterStart),
-                contentAlignment = Alignment.Center
-            ) {
-                Icon(
-                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = "Previous",
-                    tint = Color.White
-                )
-            }
-
-            // RIGHT
-            Box(
-                modifier = Modifier
-                    .padding(end = 8.dp)
-                    .size(40.dp)
-                    .clip(RoundedCornerShape(20.dp))
-                    .background(Color.Black.copy(alpha = 0.6f))
-                    .clickable {
-                        index = (index + 1) % movies.size
-                    }
-                    .align(Alignment.CenterEnd),
-                contentAlignment = Alignment.Center
-            ) {
-                Icon(
-                    imageVector = Icons.Default.ArrowBack,
-                    contentDescription = "Next",
-                    modifier = Modifier.rotate(180f),
-                    tint = Color.White
-                )
-            }
-
         }
     }
+
 }

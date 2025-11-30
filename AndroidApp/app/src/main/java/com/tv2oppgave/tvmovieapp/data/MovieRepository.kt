@@ -10,12 +10,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-/**
- * MovieRepository
- * - Fetches feed lists and movie details from your .NET backend API
- * - Caches list items in Room
- * - Returns flows for reactive UI updates
- */
 object MovieRepository {
 
     private val httpClient =
