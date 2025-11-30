@@ -1,4 +1,4 @@
-package com.tv2oppgave.tvmovieapp.ui.ListView.components
+package com.tv2oppgave.tvmovieapp.ui.listView.components
 
 import androidx.compose.runtime.Composable
 import android.net.Uri

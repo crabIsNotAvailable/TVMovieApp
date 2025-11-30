@@ -38,6 +38,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.tv2oppgave.tvmovieapp.data.MovieDetailUiModel
+import androidx.compose.material.icons.filled.PlayArrow
+
 
 @Composable
 fun MovieDetailContent(
@@ -51,7 +53,6 @@ fun MovieDetailContent(
             .background(Color.Black)
     ) {
 
-        /* ---------- HERO ---------- */
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -65,10 +66,25 @@ fun MovieDetailContent(
                     contentScale = ContentScale.Fit,
                     modifier = Modifier.fillMaxSize()
                 )
-
             }
 
-            // Bottom gradient
+            Box(
+                modifier = Modifier
+                    .size(72.dp)
+                    .clip(RoundedCornerShape(36.dp))
+                    .background(Color.Black.copy(alpha = 0.6f))
+                    .align(Alignment.Center)
+                    .clickable(enabled = false) { },
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(
+                    imageVector = Icons.Filled.PlayArrow,
+                    contentDescription = "Play",
+                    tint = Color.White,
+                    modifier = Modifier.size(40.dp)
+                )
+            }
+
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -84,7 +100,6 @@ fun MovieDetailContent(
                     )
             )
 
-            // ✅ Back button (INSIDE hero)
             Box(
                 modifier = Modifier
                     .padding(16.dp)
@@ -103,7 +118,6 @@ fun MovieDetailContent(
             }
         }
 
-        /* ---------- CONTENT ---------- */
         Column(
             modifier = Modifier
                 .fillMaxWidth()

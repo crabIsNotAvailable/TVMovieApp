@@ -1,4 +1,4 @@
-package com.tv2oppgave.tvmovieapp.ui.ListView.components
+package com.tv2oppgave.tvmovieapp.ui.listView.components
 
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
