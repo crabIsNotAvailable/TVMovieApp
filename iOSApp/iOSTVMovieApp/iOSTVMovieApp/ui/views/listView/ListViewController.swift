@@ -32,8 +32,6 @@ final class ListViewController: UIViewController, UIScrollViewDelegate {
         updateScrollHintVisibility()
     }
 
-    // MARK: - Background Gradient
-
     private func applyBackgroundGradient() {
         backgroundGradient.colors = [
             UIColor(red: 0.00, green: 0.22, blue: 0.10, alpha: 1).cgColor,
@@ -45,8 +43,6 @@ final class ListViewController: UIViewController, UIScrollViewDelegate {
 
         view.layer.insertSublayer(backgroundGradient, at: 0)
     }
-
-    // MARK: - Scroll
 
     private func setupScroll() {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -72,8 +68,6 @@ final class ListViewController: UIViewController, UIScrollViewDelegate {
             stackView.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor)
         ])
     }
-
-    // MARK: - Scroll Hint (LANDSCAPE ONLY)
 
     private func setupScrollHint() {
 
@@ -137,13 +131,9 @@ final class ListViewController: UIViewController, UIScrollViewDelegate {
         scrollHintView.isHidden = !isLandscape
     }
 
-    // MARK: - Orientation Handling
-
     private func updateTopPaddingForOrientation() {
         scrollView.contentInset.top = isLandscape ? 0 : 100
     }
-
-    // MARK: - Sections
 
     private func setupSections() {
 

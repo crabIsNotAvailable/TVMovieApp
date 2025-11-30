@@ -101,7 +101,7 @@ final class DetailsViewController: UIViewController, UICollectionViewDataSource,
         ])
     }
 
-    // MARK: Poster (FIXED, 50% SCREEN)
+    // MARK: Poster
 
     private func setupPoster() {
         view.addSubview(posterContainer)
@@ -122,7 +122,6 @@ final class DetailsViewController: UIViewController, UICollectionViewDataSource,
         posterImageView.clipsToBounds = true
         posterImageView.layer.cornerRadius = 18
 
-        // ✅ THEN ACTIVATE CONSTRAINTS
         NSLayoutConstraint.activate([
             posterImageView.centerXAnchor.constraint(equalTo: posterContainer.centerXAnchor),
             posterImageView.centerYAnchor.constraint(equalTo: posterContainer.centerYAnchor),
@@ -175,7 +174,7 @@ final class DetailsViewController: UIViewController, UICollectionViewDataSource,
     }
 
 
-    // MARK: Scrollable Content (GROWS DOWN)
+    // MARK: Scrollable Content
 
     private func setupScrollView() {
         view.addSubview(scrollView)
@@ -193,11 +192,11 @@ final class DetailsViewController: UIViewController, UICollectionViewDataSource,
         contentStack.translatesAutoresizingMaskIntoConstraints = false
         contentStack.isLayoutMarginsRelativeArrangement = true
 
-        let sidePadding = view.bounds.width * 0.05
+        let sidePadding = view.bounds.width * 0.20
         contentStack.layoutMargins = UIEdgeInsets(
             top: 32,
             left: sidePadding,
-            bottom: 60,
+            bottom: 20,
             right: sidePadding
         )
 

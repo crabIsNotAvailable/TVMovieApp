@@ -1,4 +1,5 @@
 import UIKit
+import SwiftUI
 
 final class HighlightHeroView: UIView {
 
@@ -11,13 +12,16 @@ final class HighlightHeroView: UIView {
     private var index = 0
     private var timer: Timer?
 
+    private var imageTask: Task<Void, Never>?
+
     // MARK: - UI
+    private let containerStack = UIStackView()
     private let imageView = UIImageView()
+    private let titleLabel = UILabel()
     private let leftButton = UIButton(type: .system)
     private let rightButton = UIButton(type: .system)
 
     // MARK: - Init
-
     init(feedId: String) {
         self.feedId = feedId
         super.init(frame: .zero)
@@ -32,48 +36,69 @@ final class HighlightHeroView: UIView {
 
     deinit {
         timer?.invalidate()
+        imageTask?.cancel()
     }
 
     // MARK: - Setup
-
     private func setupUI() {
-        backgroundColor = .black
-        clipsToBounds = true
+        backgroundColor = .clear
 
-        imageView.contentMode = .scaleAspectFill
-        imageView.isUserInteractionEnabled = true
-        addSubview(imageView)
+        // Stack
+        containerStack.axis = .vertical
+        containerStack.spacing = 12
+        containerStack.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(containerStack)
 
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: topAnchor),
-            imageView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: trailingAnchor)
+            containerStack.topAnchor.constraint(equalTo: topAnchor),
+            containerStack.bottomAnchor.constraint(equalTo: bottomAnchor),
+            containerStack.leadingAnchor.constraint(equalTo: leadingAnchor),
+            containerStack.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
+
+        // Image
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.isUserInteractionEnabled = true
+        containerStack.addArrangedSubview(imageView)
+
+        imageView.heightAnchor
+            .constraint(equalTo: imageView.widthAnchor, multiplier: 9.0 / 16.0)
+            .isActive = true
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTap))
         imageView.addGestureRecognizer(tap)
 
+        // Title (below image)
+        titleLabel.textColor = UIColor(AppColors.gold)
+        titleLabel.font = .systemFont(ofSize: 22, weight: .semibold)
+        titleLabel.textAlignment = .center
+        titleLabel.numberOfLines = 2
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        containerStack.addArrangedSubview(titleLabel)
+
+        NSLayoutConstraint.activate([
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
+        ])
+
+        // Arrows
         setupArrowButton(leftButton, rotate: false)
         setupArrowButton(rightButton, rotate: true)
 
-        leftButton.addTarget(self, action: #selector(showPrevious), for: .touchUpInside)
-        rightButton.addTarget(self, action: #selector(showNext), for: .touchUpInside)
-
-        addSubview(leftButton)
-        addSubview(rightButton)
+        imageView.addSubview(leftButton)
+        imageView.addSubview(rightButton)
 
         NSLayoutConstraint.activate([
-            leftButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-            leftButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            leftButton.centerYAnchor.constraint(equalTo: imageView.centerYAnchor),
+            leftButton.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 8),
 
-            rightButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-            rightButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
+            rightButton.centerYAnchor.constraint(equalTo: imageView.centerYAnchor),
+            rightButton.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -8)
         ])
 
-        // 16:9 ratio
-        heightAnchor.constraint(equalTo: widthAnchor, multiplier: 9.0 / 16.0).isActive = true
+        leftButton.addTarget(self, action: #selector(showPrevious), for: .touchUpInside)
+        rightButton.addTarget(self, action: #selector(showNext), for: .touchUpInside)
     }
 
     private func setupArrowButton(_ button: UIButton, rotate: Bool) {
@@ -94,38 +119,54 @@ final class HighlightHeroView: UIView {
     }
 
     // MARK: - Data
-
     private func loadMovies() {
         Task {
             let list = await MovieRepository.shared.getFeedMovies(feedId)
-            self.movies = list
-            self.index = 0
-            showCurrent()
+            await MainActor.run {
+                self.movies = list
+                self.index = 0
+                self.renderMovie(animated: false)
+            }
         }
     }
 
-    private func showCurrent() {
+    private func renderMovie(animated: Bool = true) {
         guard !movies.isEmpty else { return }
-        loadImage(urlString: movies[index].imageUrl)
-    }
 
-    private func loadImage(urlString: String) {
-        guard let url = URL(string: urlString) else { return }
+        let movie = movies[index]
+        imageTask?.cancel()
 
-        Task {
-            do {
-                let result = try await URLSession.shared.data(from: url)
-                let data = result.0
-                self.imageView.image = UIImage(data: data)
-            } catch {
-                // ignore
+        imageTask = Task {
+            guard
+                let url = URL(string: movie.imageUrl),
+                let (data, _) = try? await URLSession.shared.data(from: url),
+                let image = UIImage(data: data)
+            else { return }
+
+            await MainActor.run {
+                let updates = {
+                    self.imageView.image = image
+                    self.titleLabel.text = movie.title
+                }
+
+                guard animated else {
+                    updates()
+                    return
+                }
+
+                UIView.transition(
+                    with: self.containerStack,
+                    duration: 0.45,
+                    options: [.transitionCrossDissolve, .allowAnimatedContent],
+                    animations: updates
+                )
             }
         }
     }
 
     // MARK: - Timer
-
     private func startTimer() {
+        timer?.invalidate()
         timer = Timer.scheduledTimer(
             timeInterval: 5,
             target: self,
@@ -135,22 +176,28 @@ final class HighlightHeroView: UIView {
         )
     }
 
-    // MARK: - Actions
+    private func resetTimer() {
+        startTimer()
+    }
 
+    // MARK: - Actions
     @objc private func showNext() {
         guard !movies.isEmpty else { return }
         index = (index + 1) % movies.count
-        showCurrent()
+        renderMovie()
+        resetTimer()
     }
 
     @objc private func showPrevious() {
         guard !movies.isEmpty else { return }
         index = (index - 1 + movies.count) % movies.count
-        showCurrent()
+        renderMovie()
+        resetTimer()
     }
 
     @objc private func didTap() {
         guard !movies.isEmpty else { return }
+        resetTimer()
         onSelect?(movies[index])
     }
 }

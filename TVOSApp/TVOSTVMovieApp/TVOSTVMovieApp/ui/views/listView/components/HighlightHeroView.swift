@@ -1,35 +1,106 @@
 import UIKit
+import SwiftUI
 
 final class HighlightHeroView: UIView {
 
+    // MARK: - Public
     var onSelect: ((MovieListItem) -> Void)?
 
+    // MARK: - Data
     private let feedId: String
     private var movies: [MovieListItem] = []
     private var index: Int = 0
 
+    // MARK: - Layout constants
     private let cardWidth: CGFloat = 900
     private let cardHeight: CGFloat = 500
     private let spacing: CGFloat = 520
     private let neighborRadius: Int = 2
+    private let titleHeight: CGFloat = 80   // ✅ space reserved for title
 
     private var cards: [HeroCardView] = []
 
+    // MARK: - Title
+    private let titleLabel = UILabel()
+
+    // MARK: - Init
     init(feedId: String) {
         self.feedId = feedId
         super.init(frame: .zero)
         clipsToBounds = false
+        setupTitleLabel()
         loadMovies()
     }
 
     required init?(coder: NSCoder) { fatalError() }
 
+    // MARK: - Focus
     override var canBecomeFocused: Bool { true }
+
+    override var intrinsicContentSize: CGSize {
+        CGSize(width: UIView.noIntrinsicMetric, height: 520 + titleHeight)
+    }
 
     override func layoutSubviews() {
         super.layoutSubviews()
         updateLayout(animated: false)
     }
+
+    override func didMoveToWindow() {
+        super.didMoveToWindow()
+        DispatchQueue.main.async {
+            self.setNeedsFocusUpdate()
+            self.updateFocusIfNeeded()
+        }
+    }
+
+    // MARK: - Title setup
+
+    private func setupTitleLabel() {
+        titleLabel.textColor = UIColor(AppColors.gold)
+        titleLabel.font = .systemFont(ofSize: 28, weight: .semibold)
+        titleLabel.textAlignment = .center
+        titleLabel.numberOfLines = 2
+        titleLabel.alpha = 0
+
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(titleLabel)
+
+        NSLayoutConstraint.activate([
+            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
+            titleLabel.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: 40),
+            titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -40),
+            titleLabel.heightAnchor.constraint(equalToConstant: titleHeight)
+        ])
+    }
+
+    private func updateTitle(animated: Bool) {
+        guard movies.indices.contains(index) else {
+            titleLabel.text = nil
+            titleLabel.alpha = 0
+            return
+        }
+
+        let newText = movies[index].title.uppercased()
+
+        if !animated || titleLabel.text == nil {
+            titleLabel.text = newText
+            titleLabel.alpha = 1
+            return
+        }
+
+        UIView.animate(withDuration: 0.18, animations: {
+            self.titleLabel.alpha = 0
+        }, completion: { _ in
+            self.titleLabel.text = newText
+            UIView.animate(withDuration: 0.22) {
+                self.titleLabel.alpha = 1
+            }
+        })
+    }
+
+    // MARK: - Data
 
     private func loadMovies() {
         Task {
@@ -38,6 +109,7 @@ final class HighlightHeroView: UIView {
             await MainActor.run {
                 self.buildCards()
                 self.updateLayout(animated: false)
+                self.updateTitle(animated: false)
                 self.setNeedsFocusUpdate()
                 self.updateFocusIfNeeded()
             }
@@ -58,6 +130,7 @@ final class HighlightHeroView: UIView {
                 } else {
                     self.index = i
                     self.updateLayout(animated: true)
+                    self.updateTitle(animated: true)
                 }
             }
 
@@ -65,22 +138,14 @@ final class HighlightHeroView: UIView {
             cards.append(card)
         }
     }
-    override var intrinsicContentSize: CGSize {
-        CGSize(width: UIView.noIntrinsicMetric, height: 520)
-    }
-    override func didMoveToWindow() {
-        super.didMoveToWindow()
 
-        DispatchQueue.main.async {
-            self.setNeedsFocusUpdate()
-            self.updateFocusIfNeeded()
-        }
-    }
+    // MARK: - Carousel layout (unchanged logic, shifted up)
+
     private func updateLayout(animated: Bool) {
         guard !cards.isEmpty else { return }
 
         let centerX = bounds.midX
-        let centerY = bounds.midY
+        let centerY = (bounds.height - titleHeight) / 2   // ✅ move carousel up
 
         let animations = {
             for (i, card) in self.cards.enumerated() {
@@ -94,7 +159,6 @@ final class HighlightHeroView: UIView {
 
                 let offsetX = CGFloat(d) * self.spacing
                 let scale   = max(0.85, 1 - CGFloat(absD) * 0.08)
-                let rotateY = CGFloat(-d) * 12 * (.pi / 180)
                 let opacity = max(0.25, 1 - CGFloat(absD) * 0.18)
 
                 card.alpha = opacity
@@ -109,17 +173,15 @@ final class HighlightHeroView: UIView {
 
                 card.transform = transform
                 card.layer.zPosition = CGFloat(1000 - absD)
-
-                // optional: 3D tilt via layer.transform if you want
             }
         }
 
-        if animated {
-            UIView.animate(withDuration: 0.35, animations: animations)
-        } else {
-            animations()
-        }
+        animated
+            ? UIView.animate(withDuration: 0.35, animations: animations)
+            : animations()
     }
+
+    // MARK: - Remote input
 
     override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
         guard let press = presses.first else { return }
@@ -128,10 +190,12 @@ final class HighlightHeroView: UIView {
         case .leftArrow:
             index = wrap(index - 1)
             updateLayout(animated: true)
+            updateTitle(animated: true)
 
         case .rightArrow:
             index = wrap(index + 1)
             updateLayout(animated: true)
+            updateTitle(animated: true)
 
         case .select:
             if movies.indices.contains(index) {
