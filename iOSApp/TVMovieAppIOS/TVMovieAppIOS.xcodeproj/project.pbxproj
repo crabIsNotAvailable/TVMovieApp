@@ -29,20 +29,23 @@
 		9DBFC1492ED5962C0013F91B /* TVMovieAppIOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TVMovieAppIOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		9DBFC3072EDB36B60013F91B /* Exceptions for "TVMovieAppIOS" folder in "TVMovieAppIOS" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 9DBFC12F2ED596290013F91B /* TVMovieAppIOS */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		9DBFC1322ED596290013F91B /* TVMovieAppIOS */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				9DBFC3072EDB36B60013F91B /* Exceptions for "TVMovieAppIOS" folder in "TVMovieAppIOS" target */,
+			);
 			path = TVMovieAppIOS;
-			sourceTree = "<group>";
-		};
-		9DBFC1422ED5962C0013F91B /* TVMovieAppIOSTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = TVMovieAppIOSTests;
-			sourceTree = "<group>";
-		};
-		9DBFC14C2ED5962C0013F91B /* TVMovieAppIOSUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = TVMovieAppIOSUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -76,8 +79,6 @@
 			isa = PBXGroup;
 			children = (
 				9DBFC1322ED596290013F91B /* TVMovieAppIOS */,
-				9DBFC1422ED5962C0013F91B /* TVMovieAppIOSTests */,
-				9DBFC14C2ED5962C0013F91B /* TVMovieAppIOSUITests */,
 				9DBFC1312ED596290013F91B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -130,9 +131,6 @@
 			dependencies = (
 				9DBFC1412ED5962C0013F91B /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				9DBFC1422ED5962C0013F91B /* TVMovieAppIOSTests */,
-			);
 			name = TVMovieAppIOSTests;
 			packageProductDependencies = (
 			);
@@ -152,9 +150,6 @@
 			);
 			dependencies = (
 				9DBFC14B2ED5962C0013F91B /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				9DBFC14C2ED5962C0013F91B /* TVMovieAppIOSUITests */,
 			);
 			name = TVMovieAppIOSUITests;
 			packageProductDependencies = (
@@ -396,7 +391,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "$(PROJECT_DIR)/TVMovieAppIOS/Info.plist\n";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -427,7 +423,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "$(PROJECT_DIR)/TVMovieAppIOS/Info.plist\n";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

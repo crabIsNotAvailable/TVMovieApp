@@ -1,0 +1,571 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		9DB5521E2EDB96CB0065E8BD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9DB551FF2EDB96C80065E8BD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9DB552062EDB96C80065E8BD;
+			remoteInfo = TVOSTVMovieApp;
+		};
+		9DB552282EDB96CB0065E8BD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9DB551FF2EDB96C80065E8BD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9DB552062EDB96C80065E8BD;
+			remoteInfo = TVOSTVMovieApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9DB552072EDB96C80065E8BD /* TVOSTVMovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TVOSTVMovieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DB5521D2EDB96CB0065E8BD /* TVOSTVMovieAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TVOSTVMovieAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DB552272EDB96CB0065E8BD /* TVOSTVMovieAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TVOSTVMovieAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		9DB552092EDB96C80065E8BD /* TVOSTVMovieApp */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = TVOSTVMovieApp;
+			sourceTree = "<group>";
+		};
+		9DB552202EDB96CB0065E8BD /* TVOSTVMovieAppTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = TVOSTVMovieAppTests;
+			sourceTree = "<group>";
+		};
+		9DB5522A2EDB96CB0065E8BD /* TVOSTVMovieAppUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = TVOSTVMovieAppUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9DB552042EDB96C80065E8BD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DB5521A2EDB96CB0065E8BD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DB552242EDB96CB0065E8BD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9DB551FE2EDB96C80065E8BD = {
+			isa = PBXGroup;
+			children = (
+				9DB552092EDB96C80065E8BD /* TVOSTVMovieApp */,
+				9DB552202EDB96CB0065E8BD /* TVOSTVMovieAppTests */,
+				9DB5522A2EDB96CB0065E8BD /* TVOSTVMovieAppUITests */,
+				9DB552082EDB96C80065E8BD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9DB552082EDB96C80065E8BD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9DB552072EDB96C80065E8BD /* TVOSTVMovieApp.app */,
+				9DB5521D2EDB96CB0065E8BD /* TVOSTVMovieAppTests.xctest */,
+				9DB552272EDB96CB0065E8BD /* TVOSTVMovieAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9DB552062EDB96C80065E8BD /* TVOSTVMovieApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DB552312EDB96CB0065E8BD /* Build configuration list for PBXNativeTarget "TVOSTVMovieApp" */;
+			buildPhases = (
+				9DB552032EDB96C80065E8BD /* Sources */,
+				9DB552042EDB96C80065E8BD /* Frameworks */,
+				9DB552052EDB96C80065E8BD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				9DB552092EDB96C80065E8BD /* TVOSTVMovieApp */,
+			);
+			name = TVOSTVMovieApp;
+			packageProductDependencies = (
+			);
+			productName = TVOSTVMovieApp;
+			productReference = 9DB552072EDB96C80065E8BD /* TVOSTVMovieApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9DB5521C2EDB96CB0065E8BD /* TVOSTVMovieAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DB552342EDB96CB0065E8BD /* Build configuration list for PBXNativeTarget "TVOSTVMovieAppTests" */;
+			buildPhases = (
+				9DB552192EDB96CB0065E8BD /* Sources */,
+				9DB5521A2EDB96CB0065E8BD /* Frameworks */,
+				9DB5521B2EDB96CB0065E8BD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9DB5521F2EDB96CB0065E8BD /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				9DB552202EDB96CB0065E8BD /* TVOSTVMovieAppTests */,
+			);
+			name = TVOSTVMovieAppTests;
+			packageProductDependencies = (
+			);
+			productName = TVOSTVMovieAppTests;
+			productReference = 9DB5521D2EDB96CB0065E8BD /* TVOSTVMovieAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		9DB552262EDB96CB0065E8BD /* TVOSTVMovieAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DB552372EDB96CB0065E8BD /* Build configuration list for PBXNativeTarget "TVOSTVMovieAppUITests" */;
+			buildPhases = (
+				9DB552232EDB96CB0065E8BD /* Sources */,
+				9DB552242EDB96CB0065E8BD /* Frameworks */,
+				9DB552252EDB96CB0065E8BD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9DB552292EDB96CB0065E8BD /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				9DB5522A2EDB96CB0065E8BD /* TVOSTVMovieAppUITests */,
+			);
+			name = TVOSTVMovieAppUITests;
+			packageProductDependencies = (
+			);
+			productName = TVOSTVMovieAppUITests;
+			productReference = 9DB552272EDB96CB0065E8BD /* TVOSTVMovieAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9DB551FF2EDB96C80065E8BD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2610;
+				LastUpgradeCheck = 2610;
+				TargetAttributes = {
+					9DB552062EDB96C80065E8BD = {
+						CreatedOnToolsVersion = 26.1.1;
+					};
+					9DB5521C2EDB96CB0065E8BD = {
+						CreatedOnToolsVersion = 26.1.1;
+						TestTargetID = 9DB552062EDB96C80065E8BD;
+					};
+					9DB552262EDB96CB0065E8BD = {
+						CreatedOnToolsVersion = 26.1.1;
+						TestTargetID = 9DB552062EDB96C80065E8BD;
+					};
+				};
+			};
+			buildConfigurationList = 9DB552022EDB96C80065E8BD /* Build configuration list for PBXProject "TVOSTVMovieApp" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9DB551FE2EDB96C80065E8BD;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 9DB552082EDB96C80065E8BD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9DB552062EDB96C80065E8BD /* TVOSTVMovieApp */,
+				9DB5521C2EDB96CB0065E8BD /* TVOSTVMovieAppTests */,
+				9DB552262EDB96CB0065E8BD /* TVOSTVMovieAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9DB552052EDB96C80065E8BD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DB5521B2EDB96CB0065E8BD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DB552252EDB96CB0065E8BD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9DB552032EDB96C80065E8BD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DB552192EDB96CB0065E8BD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DB552232EDB96CB0065E8BD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9DB5521F2EDB96CB0065E8BD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9DB552062EDB96C80065E8BD /* TVOSTVMovieApp */;
+			targetProxy = 9DB5521E2EDB96CB0065E8BD /* PBXContainerItemProxy */;
+		};
+		9DB552292EDB96CB0065E8BD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9DB552062EDB96C80065E8BD /* TVOSTVMovieApp */;
+			targetProxy = 9DB552282EDB96CB0065E8BD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		9DB5522F2EDB96CB0065E8BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = appletvos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TVOS_DEPLOYMENT_TARGET = 26.1;
+			};
+			name = Debug;
+		};
+		9DB552302EDB96CB0065E8BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = appletvos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				TVOS_DEPLOYMENT_TARGET = 26.1;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9DB552322EDB96CB0065E8BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = TV2Oppgave.TVOSTVMovieApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+			};
+			name = Debug;
+		};
+		9DB552332EDB96CB0065E8BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = TV2Oppgave.TVOSTVMovieApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+			};
+			name = Release;
+		};
+		9DB552352EDB96CB0065E8BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = TV2Oppgave.TVOSTVMovieAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TVOSTVMovieApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TVOSTVMovieApp";
+				TVOS_DEPLOYMENT_TARGET = 26.1;
+			};
+			name = Debug;
+		};
+		9DB552362EDB96CB0065E8BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = TV2Oppgave.TVOSTVMovieAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TVOSTVMovieApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TVOSTVMovieApp";
+				TVOS_DEPLOYMENT_TARGET = 26.1;
+			};
+			name = Release;
+		};
+		9DB552382EDB96CB0065E8BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = TV2Oppgave.TVOSTVMovieAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TEST_TARGET_NAME = TVOSTVMovieApp;
+			};
+			name = Debug;
+		};
+		9DB552392EDB96CB0065E8BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = TV2Oppgave.TVOSTVMovieAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TEST_TARGET_NAME = TVOSTVMovieApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9DB552022EDB96C80065E8BD /* Build configuration list for PBXProject "TVOSTVMovieApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DB5522F2EDB96CB0065E8BD /* Debug */,
+				9DB552302EDB96CB0065E8BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9DB552312EDB96CB0065E8BD /* Build configuration list for PBXNativeTarget "TVOSTVMovieApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DB552322EDB96CB0065E8BD /* Debug */,
+				9DB552332EDB96CB0065E8BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9DB552342EDB96CB0065E8BD /* Build configuration list for PBXNativeTarget "TVOSTVMovieAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DB552352EDB96CB0065E8BD /* Debug */,
+				9DB552362EDB96CB0065E8BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9DB552372EDB96CB0065E8BD /* Build configuration list for PBXNativeTarget "TVOSTVMovieAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DB552382EDB96CB0065E8BD /* Debug */,
+				9DB552392EDB96CB0065E8BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9DB551FF2EDB96C80065E8BD /* Project object */;
+}

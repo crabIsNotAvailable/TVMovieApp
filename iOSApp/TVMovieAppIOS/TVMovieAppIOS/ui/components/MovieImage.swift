@@ -1,31 +1,44 @@
-//
-//  MovieImage.swift
-//  TVMovieAppIOS
-//
-//  Created by Maren Rødland on 25/11/2025.
-//
+import UIKit
 
+final class MovieCollectionViewCell: UICollectionViewCell {
 
-import SwiftUI
+    static let reuseId = "MovieCollectionViewCell"
 
-struct MovieImage: View {
-    let url: String
-    let variant: String
+    private let imageView = UIImageView()
 
-    var body: some View {
-        let isPoster = (variant == "poster")
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
 
-        let width: CGFloat  = isPoster ? 160 : 320
-        let height: CGFloat = isPoster ? 240 : 180
-        let ratio: CGFloat  = isPoster ? (2.0/3.0) : (16.0/9.0)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
-        AsyncImage(url: URL(string: url)) { img in
-            img.resizable()
-                .aspectRatio(ratio, contentMode: .fill)
-        } placeholder: {
-            Rectangle().fill(Color.gray.opacity(0.2))
+    private func setup() {
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 8
+
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(imageView)
+
+        NSLayoutConstraint.activate([
+            imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+        ])
+    }
+
+    func configure(with urlString: String) {
+        imageView.image = nil
+
+        guard let url = URL(string: urlString) else { return }
+
+        Task {
+            let (data, _) = try await URLSession.shared.data(from: url)
+            imageView.image = UIImage(data: data)
         }
-        .frame(width: width, height: height)
-        .clipShape(RoundedRectangle(cornerRadius: 8))
     }
 }
