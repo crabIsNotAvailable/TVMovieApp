@@ -5,6 +5,12 @@
 Make sure you are in the WebApp folder in the terminal:
 
 ```bash
+cd WebApp
+```
+
+Run the following command to start:
+
+```bash
 npm install
 npm start
 ```
