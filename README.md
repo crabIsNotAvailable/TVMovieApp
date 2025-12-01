@@ -1,4 +1,4 @@
-# ℹ️ TVMovieApp
+# TVMovieApp
 
 This is a mock streaming app for movies created via TV2's API endpoint "https://ai.play.tv2.no/v4/feeds/page_01jwxh2p1me02sbhyxmht24cbp".
 
