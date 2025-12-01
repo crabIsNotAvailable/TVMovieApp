@@ -1,5 +1,4 @@
 import UIKit
-import SwiftUI
 
 final class HighlightHeroView: UIView {
 
