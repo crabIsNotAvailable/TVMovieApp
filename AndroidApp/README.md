@@ -4,7 +4,7 @@
 
 Open project in Android Studio, and let Gradle sync and download dependencies.
 
-## Prerequisites
+## Requirements
 
 - Android Studio - Android Studio Otter | 2025.2.1
 - Android SDK - 34

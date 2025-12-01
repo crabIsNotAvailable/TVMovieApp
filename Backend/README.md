@@ -11,6 +11,6 @@ dotnet run
 Backend should now be available at http://localhost:8080/swagger/index.html
 The port can be changed in Properties/launchSettings.json
 
-## Prerequisites
+## Requirements
 
 - .NET SDK - 8.0.416
