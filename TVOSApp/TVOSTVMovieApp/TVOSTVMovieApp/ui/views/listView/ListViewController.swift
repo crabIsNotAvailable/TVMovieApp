@@ -17,8 +17,8 @@ final class ListViewController: UIViewController {
         let gradientLayer = CAGradientLayer()
 
         gradientLayer.colors = [
-            UIColor(red: 0.00, green: 0.22, blue: 0.10, alpha: 1).cgColor, // #01371A
-            UIColor(red: 0.01, green: 0.06, blue: 0.02, alpha: 1).cgColor  // #041004
+            UIColor(red: 0.00, green: 0.22, blue: 0.10, alpha: 1).cgColor,
+            UIColor(red: 0.01, green: 0.06, blue: 0.02, alpha: 1).cgColor
         ]
 
         gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)

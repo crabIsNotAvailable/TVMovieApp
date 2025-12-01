@@ -28,10 +28,9 @@ final class MovieRepository {
         do {
             let feed = try await MovieApi.fetchFeed(feedId)
 
-            // feed.movies is your existing DTO array
             for dto in feed.movies {
                 let entity = CDMovie(context: context)
-                entity.remoteId = dto.id              // String → String
+                entity.remoteId = dto.id
                 entity.title = dto.title
                 entity.imageUrl = dto.imageUrl
                 entity.feedId = feedId

@@ -1,7 +1,7 @@
 import Foundation
 
 struct MovieListItem: Identifiable, Hashable {
-    let id: String          // use remoteId as identity
+    let id: String
     let title: String
     let imageUrl: String
     let feedId: String

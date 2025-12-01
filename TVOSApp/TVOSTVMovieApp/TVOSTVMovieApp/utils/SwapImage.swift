@@ -4,7 +4,6 @@ func toMovieImage(_ url: String, type: String = "landscape") -> String {
     var base = url
     var params: [String: String] = [:]
 
-    // If URL has ?, split normally
     if let idx = url.firstIndex(of: "?") {
         base = String(url[..<idx])
         let query = String(url[url.index(after: idx)...])
@@ -16,7 +15,6 @@ func toMovieImage(_ url: String, type: String = "landscape") -> String {
         }
     }
 
-    // Apply Android logic exactly
     if type == "poster" {
         params["location"] = "moviePoster"
         params["width"] = "600"
@@ -27,7 +25,6 @@ func toMovieImage(_ url: String, type: String = "landscape") -> String {
         params["height"] = "1080"
     }
 
-    // Build query
     let query = params
         .map { "\($0)=\($1)" }
         .joined(separator: "&")
