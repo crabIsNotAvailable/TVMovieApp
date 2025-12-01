@@ -48,3 +48,6 @@ DerivedData/
 # --- React / Node ---
 node_modules/
 dist/
+
+# --- TVOS ---
+TVMovieApp.sln

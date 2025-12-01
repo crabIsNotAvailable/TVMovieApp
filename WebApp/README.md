@@ -2,7 +2,7 @@
 
 ## Installation
 
-Access the tvmovieapp folder in the terminal, and run:
+Access the WebApp folder in the terminal, and run:
 
 ```bash
 npm install
