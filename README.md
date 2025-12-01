@@ -1,6 +1,6 @@
 # TVMovieApp
 
-This is a mock streaming app for movies created via TV2's API endpoint "https://ai.play.tv2.no/v4/feeds/page_01jwxh2p1me02sbhyxmht24cbp".
+This is a mock streaming app for movies created via TV2's API endpoint: https://ai.play.tv2.no/v4/feeds/page_01jwxh2p1me02sbhyxmht24cbp
 
 The backend is written with .NET, and the frontend has four different applications:
 
