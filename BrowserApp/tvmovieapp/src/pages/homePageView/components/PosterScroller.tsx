@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { FeedMovie } from "../../../models/feed";
 import { toMovieImage } from "../../../utils/swapImage";
 

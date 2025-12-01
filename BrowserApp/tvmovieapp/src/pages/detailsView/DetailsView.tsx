@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { MovieDetail } from "../../models/movie";
 import { fetchMovieDetail } from "../../api/movies";
@@ -92,7 +92,6 @@ export const DetailsView: FC = () => {
             }}
           />
         )}
-        {/* Fake play button */}
         <div
           style={{
             position: "absolute",

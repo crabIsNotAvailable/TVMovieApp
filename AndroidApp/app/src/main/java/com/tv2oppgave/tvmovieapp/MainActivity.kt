@@ -10,7 +10,6 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // ✅ required before Compose uses repository
         MovieRepository.initializeDatabase(applicationContext)
 
         setContent {

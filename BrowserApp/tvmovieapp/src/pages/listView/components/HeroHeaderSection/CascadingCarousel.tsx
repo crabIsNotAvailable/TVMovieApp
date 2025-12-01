@@ -1,11 +1,4 @@
-import React, {
-  CSSProperties,
-  Dispatch,
-  FC,
-  SetStateAction,
-  useEffect,
-  useRef,
-} from "react";
+import { Dispatch, FC, SetStateAction, useEffect, useRef } from "react";
 import { FeedMovie } from "../../../../models/feed";
 import { clamp, signedDistanceFor } from "../../../../utils/mathHelpers";
 import { useNavigate } from "react-router-dom";

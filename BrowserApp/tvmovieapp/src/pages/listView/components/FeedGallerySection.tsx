@@ -1,4 +1,4 @@
-import React, { useEffect, useState, FC } from "react";
+import { useEffect, useState, FC } from "react";
 import { fetchFeedById } from "../../../api/movies";
 import { FeedMovie } from "../../../models/feed";
 import { HorizontalGallery } from "../../../components/cardGallery/CardGallery";
