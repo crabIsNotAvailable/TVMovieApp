@@ -1,6 +1,6 @@
 package com.tv2oppgave.tvmovieapp.utility
 
-
+// Switches between list and moviePoster image view
 fun SwapImage(url: String?, type: String = "landscape"): String {
     if (url.isNullOrBlank()) return ""
 

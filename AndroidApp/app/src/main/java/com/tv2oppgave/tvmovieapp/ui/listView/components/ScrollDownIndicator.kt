@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
-
+// Indicator for landscape view to let the user know they can scroll down
 @Composable
 fun ScrollDownIndicator(
     visible: Boolean

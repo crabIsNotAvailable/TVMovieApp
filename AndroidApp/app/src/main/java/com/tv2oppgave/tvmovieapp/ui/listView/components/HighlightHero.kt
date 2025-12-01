@@ -56,7 +56,6 @@ fun HighlightHero(
     var movies by remember { mutableStateOf<List<MovieListItem>>(emptyList()) }
     var index by remember { mutableStateOf(0) }
 
-    // Load MostSeen feed
     LaunchedEffect(feedId) {
         MovieRepository.getFeedMovies(feedId).collect { list ->
             movies = list
@@ -64,7 +63,7 @@ fun HighlightHero(
         }
     }
 
-    // ✅ Auto-advance every 5s
+    // Auto-advance every 5s
     LaunchedEffect(index, movies) {
         if (movies.isNotEmpty()) {
             delay(5000)
@@ -74,7 +73,7 @@ fun HighlightHero(
 
     if (movies.isEmpty()) return
 
-    @OptIn(ExperimentalAnimationApi::class)
+    // Fades when hero changes
     AnimatedContent(
         targetState = index,
         transitionSpec = {
@@ -139,7 +138,7 @@ fun HighlightHero(
                     contentAlignment = Alignment.Center
                 ) {
                     Icon(
-                        imageVector = Icons.Default.ArrowBack,
+                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                         contentDescription = "Next",
                         modifier = Modifier.rotate(180f),
                         tint = Color.White
@@ -160,7 +159,7 @@ fun HighlightHero(
                     shadow = Shadow(
                         color = Color(0xFFD4AF37),
                         offset = Offset.Zero,
-                        blurRadius = 80f // softer glow
+                        blurRadius = 80f
                     )
                 )
             )

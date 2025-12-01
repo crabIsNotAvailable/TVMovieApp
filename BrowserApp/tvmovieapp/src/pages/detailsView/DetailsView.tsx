@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { MovieDetail } from "../../models/movie";
 import { fetchMovieDetail } from "../../api/movies";
 import { Back } from "../../components/icons/Back";
-import { PlayIcon } from "../../components/icons/PlayButton";
+import { Play } from "../../components/icons/Play";
 
 export const DetailsView: FC = () => {
   const { "*": urlPath } = useParams();
@@ -106,7 +106,7 @@ export const DetailsView: FC = () => {
             cursor: "default",
           }}
         >
-          <PlayIcon />
+          <Play />
         </div>
 
         <div

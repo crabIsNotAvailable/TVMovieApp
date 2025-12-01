@@ -17,15 +17,13 @@ fun AppNav() {
 
     NavHost(
         navController = navController,
-        startDestination = "categories"
+        startDestination = "list"
     ) {
 
-        // ✅ Main list page
-        composable("categories") {
+        composable("list") {
             ListView(navController = navController)
         }
 
-        // ✅ Movie details page (urlPath can contain slashes)
         composable(
             route = "movie/{urlPath}",
             arguments = listOf(

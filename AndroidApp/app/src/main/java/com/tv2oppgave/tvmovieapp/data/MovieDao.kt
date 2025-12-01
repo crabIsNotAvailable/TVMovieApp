@@ -12,9 +12,6 @@ interface MovieDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(items: List<FeedItemEntity>)
 
-    @Query("SELECT * FROM feed_items")
-    suspend fun getAll(): List<FeedItemEntity>
-
     @Query("SELECT * FROM feed_items WHERE feedId = :feedId")
     suspend fun getByFeedId(feedId: String): List<FeedItemEntity>
 

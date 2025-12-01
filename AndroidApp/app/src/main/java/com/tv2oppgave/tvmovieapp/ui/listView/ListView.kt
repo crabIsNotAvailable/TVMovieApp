@@ -38,7 +38,7 @@ fun ListView(
         }
     }
 
-    Box(modifier = Modifier.fillMaxSize()) { // ✅ IMPORTANT
+    Box(modifier = Modifier.fillMaxSize()) {
         LazyColumn(
             state = listState,
             verticalArrangement = Arrangement.spacedBy(24.dp),

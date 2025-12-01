@@ -5,6 +5,7 @@ import androidx.compose.ui.platform.LocalContext
 import coil.request.ImageRequest
 import coil.imageLoader
 
+//Preloads images for feed sections to prevent lag when scrolling
 @Composable
 fun PreloadImages(
     imageUrls: List<String?>

@@ -2,13 +2,10 @@ package com.tv2oppgave.tvmovieapp.data
 
 import com.tv2oppgave.tvmovieapp.data.models.FeedResponse
 import com.tv2oppgave.tvmovieapp.data.models.MovieDetailResponse
-import com.tv2oppgave.tvmovieapp.data.models.RootFeedResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface MovieService {
-    @GET("movies/feeds")
-    suspend fun getAllFeeds(): RootFeedResponse
 
     @GET("api/movies/feed/id/{feedId}")
     suspend fun getMoviesInFeed(@Path("feedId") feedId: String): FeedResponse

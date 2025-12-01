@@ -1,4 +1,4 @@
-export const PlayIcon = () => (
+export const Play = () => (
   <div
     style={{
       width: 0,
