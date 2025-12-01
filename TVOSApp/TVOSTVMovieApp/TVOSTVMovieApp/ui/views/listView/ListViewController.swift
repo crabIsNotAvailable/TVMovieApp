@@ -7,7 +7,6 @@ final class ListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("✅ ListViewController loaded")
 
         applyBackgroundGradient()
 
@@ -31,6 +30,8 @@ final class ListViewController: UIViewController {
         view.layer.insertSublayer(gradientLayer, at: 0)
     }
 
+    // MARK: Scroll
+    
     private func setupScroll() {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
@@ -52,10 +53,10 @@ final class ListViewController: UIViewController {
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
-
+    
+    // MARK: Sections
+    
     private func setupSections() {
-
-        // ✅ HERO
         let hero = HighlightHeroView(feedId: FeedIds.mostSeen.rawValue)
         hero.onSelect = { [weak self] movie in
             self?.navigationController?.pushViewController(
@@ -65,7 +66,6 @@ final class ListViewController: UIViewController {
         }
         stackView.addArrangedSubview(hero)
 
-        // ✅ FEEDS
         addSection(title: "For deg", feedId: FeedIds.recommended.rawValue, variant: "poster")
         addSection(title: "Vist på festival", feedId: FeedIds.festival.rawValue, variant: "landscape")
         addSection(title: "Alltid film", feedId: FeedIds.focus.rawValue, variant: "landscape")

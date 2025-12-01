@@ -5,8 +5,6 @@ final class DetailsViewController: UIViewController {
     private let urlPath: String
     private var movie: MovieDetailResponse? { didSet { updateUI() } }
 
-    // MARK: UI
-
     private let scrollView = UIScrollView()
     private let contentStack = UIStackView()
 
@@ -30,16 +28,12 @@ final class DetailsViewController: UIViewController {
     private let loader = UIActivityIndicatorView(style: .large)
     private let errorLabel = UILabel()
 
-    // MARK: Init
-
     init(urlPath: String) {
         self.urlPath = urlPath
         super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder: NSCoder) { fatalError() }
-
-    // MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,7 +78,7 @@ final class DetailsViewController: UIViewController {
         setupLoader()
     }
 
-    // MARK: Poster (true 16:9 + play button)
+    // MARK: Poster
 
     private func setupPoster() {
         posterContainer.translatesAutoresizingMaskIntoConstraints = false
@@ -108,9 +102,7 @@ final class DetailsViewController: UIViewController {
             posterImageView.leadingAnchor.constraint(equalTo: posterContainer.leadingAnchor),
             posterImageView.trailingAnchor.constraint(equalTo: posterContainer.trailingAnchor)
         ])
-
-        // 🎬 Fake Play Button (circle + fixed triangle)
-
+        
         playButtonContainer.translatesAutoresizingMaskIntoConstraints = false
         playButtonContainer.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         playButtonContainer.layer.cornerRadius = 36
@@ -157,7 +149,6 @@ final class DetailsViewController: UIViewController {
         genresStack.alignment = .leading
         genresStack.translatesAutoresizingMaskIntoConstraints = false
 
-        // ✅ KEY FIX: container prevents stretching
         genresContainer.translatesAutoresizingMaskIntoConstraints = false
         genresContainer.addSubview(genresStack)
 

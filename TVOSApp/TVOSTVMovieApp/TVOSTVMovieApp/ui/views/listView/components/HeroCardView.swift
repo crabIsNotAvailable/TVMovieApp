@@ -1,11 +1,3 @@
-//
-//  HeroCardView.swift
-//  TVOSTVMovieApp
-//
-//  Created by Maren Rødland on 30/11/2025.
-//
-
-
 import UIKit
 
 final class HeroCardView: UIView {

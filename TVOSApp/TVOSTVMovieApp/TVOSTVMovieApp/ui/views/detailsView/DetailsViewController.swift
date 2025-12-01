@@ -9,8 +9,6 @@ final class DetailsViewController: UIViewController, UICollectionViewDataSource,
     private let urlPath: String
     private var movie: MovieDetailResponse? { didSet { updateUI() } }
 
-    // MARK: UI
-
     private let backButton = FocusableButton(type: .custom)
 
     private let posterContainer = UIView()
@@ -34,8 +32,6 @@ final class DetailsViewController: UIViewController, UICollectionViewDataSource,
     private let castCollection: UICollectionView
 
     private let loader = UIActivityIndicatorView(style: .large)
-
-    // MARK: Init
 
     init(urlPath: String) {
         self.urlPath = urlPath

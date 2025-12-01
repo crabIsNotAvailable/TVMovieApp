@@ -2,10 +2,8 @@ import UIKit
 
 final class HighlightHeroView: UIView {
 
-    // MARK: - Public
     var onSelect: ((MovieListItem) -> Void)?
 
-    // MARK: - Private
     private let feedId: String
     private var movies: [MovieListItem] = []
     private var index = 0
@@ -13,14 +11,12 @@ final class HighlightHeroView: UIView {
 
     private var imageTask: Task<Void, Never>?
 
-    // MARK: - UI
     private let containerStack = UIStackView()
     private let imageView = UIImageView()
     private let titleLabel = UILabel()
     private let leftButton = UIButton(type: .system)
     private let rightButton = UIButton(type: .system)
 
-    // MARK: - Init
     init(feedId: String) {
         self.feedId = feedId
         super.init(frame: .zero)
@@ -68,7 +64,7 @@ final class HighlightHeroView: UIView {
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTap))
         imageView.addGestureRecognizer(tap)
 
-        // Title (below image)
+        // Title
         titleLabel.textColor = UIColor(red: 0.80, green: 0.66, blue: 0.05, alpha: 1.00)
         titleLabel.font = .systemFont(ofSize: 22, weight: .semibold)
         titleLabel.textAlignment = .center
@@ -100,6 +96,7 @@ final class HighlightHeroView: UIView {
         rightButton.addTarget(self, action: #selector(showNext), for: .touchUpInside)
     }
 
+    // MARK: Arrow Button
     private func setupArrowButton(_ button: UIButton, rotate: Bool) {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(systemName: "chevron.left"), for: .normal)

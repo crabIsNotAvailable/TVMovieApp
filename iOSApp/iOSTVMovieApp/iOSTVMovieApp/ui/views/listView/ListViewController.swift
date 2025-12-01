@@ -43,7 +43,9 @@ final class ListViewController: UIViewController, UIScrollViewDelegate {
 
         view.layer.insertSublayer(backgroundGradient, at: 0)
     }
-
+    
+    // MARK: Scroll
+    
     private func setupScroll() {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.contentInsetAdjustmentBehavior = .never
@@ -68,6 +70,8 @@ final class ListViewController: UIViewController, UIScrollViewDelegate {
             stackView.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor)
         ])
     }
+    
+    // MARK: Scroll hint icon
 
     private func setupScrollHint() {
 
@@ -135,6 +139,8 @@ final class ListViewController: UIViewController, UIScrollViewDelegate {
         scrollView.contentInset.top = isLandscape ? 0 : 100
     }
 
+    // MARK: Sections
+    
     private func setupSections() {
 
         let hero = HighlightHeroView(feedId: FeedIds.mostSeen.rawValue)

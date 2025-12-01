@@ -35,7 +35,6 @@ final class MovieCollectionViewCell: UICollectionViewCell {
         ])
     }
 
-    // ✅ FOCUS ANIMATION (tvOS-style)
     override func didUpdateFocus(
         in context: UIFocusUpdateContext,
         with coordinator: UIFocusAnimationCoordinator
@@ -62,7 +61,7 @@ final class MovieCollectionViewCell: UICollectionViewCell {
                 let (data, _) = try await URLSession.shared.data(from: url)
                 self.imageView.image = UIImage(data: data)
             } catch {
-                print("❌ Image load failed:", error)
+                print("Image load failed:", error)
             }
         }
     }

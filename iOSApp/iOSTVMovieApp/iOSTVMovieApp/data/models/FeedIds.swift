@@ -1,11 +1,3 @@
-//
-//  FeedIds.swift
-//  TVMovieAppIOS
-//
-//  Created by Maren Rødland on 25/11/2025.
-//
-
-
 enum FeedIds: String {
     case mostSeen     = "feed_01kadw16rse8nrtnf5xs63w42b"
     case decades      = "feed_01jxm7e2kwe05akd86wa2ctfdy"

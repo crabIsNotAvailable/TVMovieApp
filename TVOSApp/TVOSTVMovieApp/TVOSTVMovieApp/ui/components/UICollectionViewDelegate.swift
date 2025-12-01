@@ -1,10 +1,6 @@
-//
-//  UICollectionViewDelegate.swift
-//  TVMovieAppIOS
-//
-//  Created by Maren Rødland on 29/11/2025.
-//
 import UIKit
+
+// Gives layout logic to movies in FeedSectionView
 
 extension FeedSectionView: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 

@@ -1,9 +1,4 @@
-//
-//  MathHelper.swift
-//  TVOSTVMovieApp
-//
-//  Created by Maren Rødland on 30/11/2025.
-//
+// Helps keep track of index of Hero Carousel
 
 func signedDistance(_ i: Int, _ index: Int, _ total: Int) -> Int {
     var d = i - index

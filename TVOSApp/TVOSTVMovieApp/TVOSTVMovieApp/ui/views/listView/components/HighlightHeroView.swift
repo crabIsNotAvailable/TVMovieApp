@@ -3,15 +3,12 @@ import SwiftUI
 
 final class HighlightHeroView: UIView {
 
-    // MARK: - Public
     var onSelect: ((MovieListItem) -> Void)?
 
-    // MARK: - Data
     private let feedId: String
     private var movies: [MovieListItem] = []
     private var index: Int = 0
 
-    // MARK: - Layout constants
     private let cardWidth: CGFloat = 900
     private let cardHeight: CGFloat = 500
     private let spacing: CGFloat = 520
@@ -20,10 +17,8 @@ final class HighlightHeroView: UIView {
 
     private var cards: [HeroCardView] = []
 
-    // MARK: - Title
     private let titleLabel = UILabel()
 
-    // MARK: - Init
     init(feedId: String) {
         self.feedId = feedId
         super.init(frame: .zero)
@@ -34,7 +29,6 @@ final class HighlightHeroView: UIView {
 
     required init?(coder: NSCoder) { fatalError() }
 
-    // MARK: - Focus
     override var canBecomeFocused: Bool { true }
 
     override var intrinsicContentSize: CGSize {
@@ -54,7 +48,7 @@ final class HighlightHeroView: UIView {
         }
     }
 
-    // MARK: - Title setup
+    // MARK: - Title
 
     private func setupTitleLabel() {
         titleLabel.textColor = UIColor(red: 0.80, green: 0.66, blue: 0.05, alpha: 1.00)
@@ -139,13 +133,13 @@ final class HighlightHeroView: UIView {
         }
     }
 
-    // MARK: - Carousel layout (unchanged logic, shifted up)
+    // MARK: - Carousel layout
 
     private func updateLayout(animated: Bool) {
         guard !cards.isEmpty else { return }
 
         let centerX = bounds.midX
-        let centerY = (bounds.height - titleHeight) / 2   // ✅ move carousel up
+        let centerY = (bounds.height - titleHeight) / 2
 
         let animations = {
             for (i, card) in self.cards.enumerated() {
@@ -181,7 +175,7 @@ final class HighlightHeroView: UIView {
             : animations()
     }
 
-    // MARK: - Remote input
+    // MARK: - Tap usage
 
     override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
         guard let press = presses.first else { return }

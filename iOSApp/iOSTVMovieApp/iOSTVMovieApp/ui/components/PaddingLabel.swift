@@ -1,12 +1,6 @@
-//
-//  PaddingLabel.swift
-//  TVMovieAppIOS
-//
-//  Created by Maren Rødland on 29/11/2025.
-//
-
-
 import UIKit
+
+// Adds padding to labels
 
 final class PaddingLabel: UILabel {
     var padding = UIEdgeInsets(top: 6, left: 12, bottom: 6, right: 12)

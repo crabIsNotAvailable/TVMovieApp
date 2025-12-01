@@ -1,11 +1,3 @@
-//
-//  MovieRepository.swift
-//  iOSTVMovieApp
-//
-//  Created by Maren Rødland on 29/11/2025.
-//
-
-
 import Foundation
 import CoreData
 
