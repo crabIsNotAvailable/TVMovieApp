@@ -16,7 +16,7 @@ final class HighlightHeroView: UIView {
     private let cardHeight: CGFloat = 500
     private let spacing: CGFloat = 520
     private let neighborRadius: Int = 2
-    private let titleHeight: CGFloat = 80   // ✅ space reserved for title
+    private let titleHeight: CGFloat = 80
 
     private var cards: [HeroCardView] = []
 
@@ -57,7 +57,7 @@ final class HighlightHeroView: UIView {
     // MARK: - Title setup
 
     private func setupTitleLabel() {
-        titleLabel.textColor = UIColor(AppColors.gold)
+        titleLabel.textColor = UIColor(red: 0.80, green: 0.66, blue: 0.05, alpha: 1.00)
         titleLabel.font = .systemFont(ofSize: 28, weight: .semibold)
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 2

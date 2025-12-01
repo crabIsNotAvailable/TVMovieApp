@@ -1,5 +1,4 @@
 import UIKit
-import SwiftUI
 
 final class DetailsViewController: UIViewController {
 
@@ -143,7 +142,7 @@ final class DetailsViewController: UIViewController {
 
     private func setupText() {
         titleLabel.font = .boldSystemFont(ofSize: 28)
-        titleLabel.textColor = UIColor(AppColors.gold)
+        titleLabel.textColor = UIColor(red: 0.80, green: 0.66, blue: 0.05, alpha: 1.00)
         titleLabel.numberOfLines = 0
 
         descriptionLabel.font = .systemFont(ofSize: 17)
@@ -179,7 +178,7 @@ final class DetailsViewController: UIViewController {
     private func setupCast() {
         castHeader.text = "Cast"
         castHeader.font = .boldSystemFont(ofSize: 20)
-        castHeader.textColor = UIColor(AppColors.gold)
+        castHeader.textColor = UIColor(red: 0.80, green: 0.66, blue: 0.05, alpha: 1.00)
 
         castStack.axis = .vertical
         castStack.spacing = 6
@@ -191,7 +190,7 @@ final class DetailsViewController: UIViewController {
     // MARK: Loader
 
     private func setupLoader() {
-        loader.color = UIColor(AppColors.gold)
+        loader.color = UIColor(red: 0.80, green: 0.66, blue: 0.05, alpha: 1.00)
         loader.startAnimating()
         contentStack.addArrangedSubview(loader)
 
@@ -261,7 +260,7 @@ final class DetailsViewController: UIViewController {
         let label = PaddingLabel()
         label.text = " \(text) "
         label.font = .systemFont(ofSize: 12, weight: .semibold)
-        label.backgroundColor = UIColor(AppColors.gold)
+        label.backgroundColor = UIColor(red: 0.80, green: 0.66, blue: 0.05, alpha: 1.00)
         label.textColor = .black
         label.layer.cornerRadius = 10
         label.clipsToBounds = true

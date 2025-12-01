@@ -1,5 +1,4 @@
 import UIKit
-import SwiftUI
 
 final class FocusableButton: UIButton {
     override var canBecomeFocused: Bool { true }
@@ -114,7 +113,6 @@ final class DetailsViewController: UIViewController, UICollectionViewDataSource,
             posterContainer.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5)
         ])
 
-        // ✅ ADD SUBVIEW FIRST
         posterContainer.addSubview(posterImageView)
         posterImageView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -139,9 +137,8 @@ final class DetailsViewController: UIViewController, UICollectionViewDataSource,
             )
         ])
         
-        // 🎬 Fake Play Button (circle + fixed-size icon)
-
-        // Circle container
+        // Fake Play Button
+        
         playButtonContainer.translatesAutoresizingMaskIntoConstraints = false
         playButtonContainer.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         playButtonContainer.layer.cornerRadius = 48
@@ -149,7 +146,6 @@ final class DetailsViewController: UIViewController, UICollectionViewDataSource,
 
         posterContainer.addSubview(playButtonContainer)
 
-        // Triangle icon (fixed size)
         playIconView.image = UIImage(systemName: "play.fill")
         playIconView.tintColor = .white
         playIconView.contentMode = .scaleAspectFit
@@ -158,13 +154,11 @@ final class DetailsViewController: UIViewController, UICollectionViewDataSource,
         playButtonContainer.addSubview(playIconView)
 
         NSLayoutConstraint.activate([
-            // Circle
             playButtonContainer.centerXAnchor.constraint(equalTo: posterImageView.centerXAnchor),
             playButtonContainer.centerYAnchor.constraint(equalTo: posterImageView.centerYAnchor),
             playButtonContainer.widthAnchor.constraint(equalToConstant: 96),
             playButtonContainer.heightAnchor.constraint(equalToConstant: 96),
 
-            // Triangle (DOES NOT SCALE)
             playIconView.centerXAnchor.constraint(equalTo: playButtonContainer.centerXAnchor),
             playIconView.centerYAnchor.constraint(equalTo: playButtonContainer.centerYAnchor),
             playIconView.widthAnchor.constraint(equalToConstant: 32),
@@ -214,7 +208,7 @@ final class DetailsViewController: UIViewController, UICollectionViewDataSource,
 
     private func setupText() {
         titleLabel.font = .boldSystemFont(ofSize: 38)
-        titleLabel.textColor = UIColor(AppColors.gold)
+        titleLabel.textColor = UIColor(red: 0.80, green: 0.66, blue: 0.05, alpha: 1.00)
         titleLabel.numberOfLines = 0
 
         descriptionLabel.font = .systemFont(ofSize: 22)
@@ -248,7 +242,7 @@ final class DetailsViewController: UIViewController, UICollectionViewDataSource,
     private func setupCast() {
         castHeader.text = "CAST"
         castHeader.font = .boldSystemFont(ofSize: 22)
-        castHeader.textColor = UIColor(AppColors.gold)
+        castHeader.textColor = UIColor(red: 0.80, green: 0.66, blue: 0.05, alpha: 1.00)
 
         castCollection.backgroundColor = .clear
         castCollection.isScrollEnabled = false
@@ -262,7 +256,7 @@ final class DetailsViewController: UIViewController, UICollectionViewDataSource,
     }
 
     private func setupLoader() {
-        loader.color = UIColor(AppColors.gold)
+        loader.color = UIColor(red: 0.80, green: 0.66, blue: 0.05, alpha: 1.00)
         loader.startAnimating()
         contentStack.addArrangedSubview(loader)
     }
@@ -320,7 +314,7 @@ final class DetailsViewController: UIViewController, UICollectionViewDataSource,
         let label = PaddingLabel()
         label.text = "  \(text)  "
         label.font = .boldSystemFont(ofSize: 18)
-        label.backgroundColor = UIColor(AppColors.gold)
+        label.backgroundColor = UIColor(red: 0.80, green: 0.66, blue: 0.05, alpha: 1.00)
         label.textColor = .black
         label.layer.cornerRadius = 16
         label.clipsToBounds = true
@@ -352,7 +346,6 @@ extension DetailsViewController {
     }
 
     func collectionView(_ collectionView: UICollectionView,
-                        layout layout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: 260, height: 32)
     }

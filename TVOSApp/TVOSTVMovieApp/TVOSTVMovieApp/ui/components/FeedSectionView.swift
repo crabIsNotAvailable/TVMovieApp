@@ -7,7 +7,6 @@
 
 
 import UIKit
-import SwiftUI
 
 final class FeedSectionView: UIView {
 
@@ -51,7 +50,7 @@ final class FeedSectionView: UIView {
 
     private func setup() {
         titleLabel.font = .boldSystemFont(ofSize: 40)
-        titleLabel.textColor = UIColor(AppColors.gold)
+        titleLabel.textColor = UIColor(red: 0.80, green: 0.66, blue: 0.05, alpha: 1.00)
 
         collectionView.backgroundColor = .clear
         collectionView.showsHorizontalScrollIndicator = false

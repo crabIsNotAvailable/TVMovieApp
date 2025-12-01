@@ -1,5 +1,4 @@
 import UIKit
-import SwiftUI
 
 final class HighlightHeroView: UIView {
 
@@ -70,7 +69,7 @@ final class HighlightHeroView: UIView {
         imageView.addGestureRecognizer(tap)
 
         // Title (below image)
-        titleLabel.textColor = UIColor(AppColors.gold)
+        titleLabel.textColor = UIColor(red: 0.80, green: 0.66, blue: 0.05, alpha: 1.00)
         titleLabel.font = .systemFont(ofSize: 22, weight: .semibold)
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 2
