@@ -2,7 +2,7 @@
 
 ## Installation
 
-Access the WebApp folder in the terminal, and run:
+Make sure you are in the WebApp folder in the terminal:
 
 ```bash
 npm install

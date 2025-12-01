@@ -2,7 +2,13 @@
 
 ## Installation
 
-Access the Backend folder in the terminal and run:
+Make sure you are in the Backend folder in the terminal:
+
+```bash
+cd Backend
+```
+
+Run the following command to start:
 
 ```bash
 dotnet run
